@@ -64,7 +64,10 @@ get '/ps/skin/preloader.gif' do
 end
 
 get '/bs/bs.:ext' do
-  serve 'bs', "bootstrap.#{params[:ext]}"
+  if params[:v] == nil
+    params[:v] = "3.3.1"
+  end
+  serve "bs/#{params[:v]}", "bootstrap.#{params[:ext]}"
 end
 
 get '/bs/theme.css' do
