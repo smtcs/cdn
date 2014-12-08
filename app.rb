@@ -83,3 +83,11 @@ end
 get '/md/md.:ext' do
   serve 'md', "materialize.#{params[:ext]}"
 end
+
+get '/md/font/mdi/Material-Design-Icons.:ext' do
+  serve 'md/font/mdi', "Material-Design-Icons.#{params[:ext]}"
+end
+
+get '/md/font/roboto/Roboto-:density.ttf' do
+  serve '/md/font/roboto', "Roboto-#{params[:density]}.ttf"
+end
