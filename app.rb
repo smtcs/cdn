@@ -79,3 +79,7 @@ end
 get '/bs/fonts/glyphicons-halflings-regular.:ext' do
   serve 'bs/fonts', "glyphicons-halflings-regular.#{params[:ext]}"
 end
+
+get '/md/md.:ext' do
+  serve 'md', "materialize.#{params[:ext]}"
+end
