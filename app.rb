@@ -1,5 +1,7 @@
 require 'sinatra'
 
+set :static_cache_control, [:public, max_age: 60 * 60 * 24 * 7]
+
 helpers do
   def serve(abbr, filename)
     case filename.split('.').last
@@ -27,8 +29,7 @@ end
 before do
   headers \
     "Access-Control-Allow-Origin" => "*",
-    "Access-Control-Allow-Headers" => "Origin, X-Requested-With, Content-Type, Accept",
-    "Cache-Control" => "public; max-age=604800"
+    "Access-Control-Allow-Headers" => "Origin, X-Requested-With, Content-Type, Accept"
 end
 
 get '/' do
