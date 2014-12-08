@@ -62,3 +62,15 @@ end
 get '/ps/skin/preloader.gif' do
   serve 'ps/skin', 'preloader.gif'
 end
+
+get '/bs/bs.:ext' do
+  serve 'bs', "bootstrap.#{params[:ext]}"
+end
+
+get '/bs/theme.css' do
+  serve 'bs', 'bootstrap-theme.css'
+end
+
+get '/bs/fonts/glyphicons-halflings-regular.:ext' do
+  serve 'bs/fonts', "glyphicons-halflings-regular.#{params[:ext]}"
+end
