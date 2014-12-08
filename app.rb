@@ -27,7 +27,8 @@ end
 before do
   headers \
     "Access-Control-Allow-Origin" => "*",
-    "Access-Control-Allow-Headers" => "Origin, X-Requested-With, Content-Type, Accept"
+    "Access-Control-Allow-Headers" => "Origin, X-Requested-With, Content-Type, Accept",
+    "Cache-Control" => "public; max-age=604800"
 end
 
 get '/' do
