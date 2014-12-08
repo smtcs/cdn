@@ -1,11 +1,11 @@
 require 'sinatra'
 
-helpers do
-  def serve(abbr, filename, type)
-    headers "Content-Type" => type.to_s
-    File.read(File.join('libs', abbr.to_s, filename.to_s))
-  end
-end
+# helpers do
+#   def serve(abbr, filename, type)
+#     headers "Content-Type" => type.to_s
+#     File.read(File.join('libs', abbr.to_s, filename.to_s))
+#   end
+# end
 
 before do
   headers \
@@ -18,6 +18,6 @@ get '/' do
   "<p><a href=\"http://smtcs.rocks/blog/Libraries\">List</a> of the different libraries.</p>"
 end
 
-get '/fa/fa.css' do
-  serve('fa', 'fa.css', 'text/css')
-end
+# get '/fa/fa.css' do
+#   serve('fa', 'fa.css', 'text/css')
+# end
