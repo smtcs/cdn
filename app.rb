@@ -58,3 +58,7 @@ end
 get '/ps/skin/skin.:ext' do
   serve 'ps/skin', "default-skin.#{params[:ext]}"
 end
+
+get '/ps/skin/preloader.gif' do
+  serve 'ps/skin', 'preloader.gif'
+end
