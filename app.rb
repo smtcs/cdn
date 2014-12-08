@@ -35,19 +35,26 @@ get '/' do
   "<p><a href=\"http://smtcs.rocks/blog/Libraries\">List</a> of the different libraries.</p>"
 end
 
-get '/jq/1.js' do
-  serve('jq', 'jquery-1.js')
-end
-
-get '/jq/2.js' do
-  serve('jq', 'jquery-2.js')
+get '/jq/:num.js' do
+  serve 'jq', "jquery-#{params[:num]}.js"
 end
 
 get '/fa/fa.css' do
-  serve('fa', 'fa.css')
+  serve 'fa', 'fa.css'
 end
 
 get '/fa/fonts/fontawesome-webfont.:ext' do
-  ext = params[:ext]
-  serve('fa/fonts', "fontawesome-webfont.#{ext}")
+  serve 'fa/fonts', "fontawesome-webfont.#{params[:ext]}"
+end
+
+get '/ps/ps.:ext' do
+  serve 'ps', "photoswipe.#{params[:ext]}"
+end
+
+get '/ps/ps-ui.js' do
+  serve 'ps', 'photoswipe-ui-default.js'
+end
+
+get '/ps/skin/skin.:ext' do
+  serve 'ps/skin', "default-skin.#{params[:ext]}"
 end
