@@ -5,5 +5,5 @@ ruby '2.0.0'
 gem 'sinatra'
 
 group :produciton do
-  gem 'passenger'
+  gem 'passenger', '~> 5.0.0.beta1'
 end
