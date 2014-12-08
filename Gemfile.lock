@@ -2,10 +2,15 @@ GEM
   remote: https://rubygems.org/
   specs:
     daemon_controller (1.2.0)
+    mail (2.6.3)
+      mime-types (>= 1.16, < 3)
+    mime-types (2.4.3)
     passenger (5.0.0.beta1)
       daemon_controller (>= 1.2.0)
       rack
       rake (>= 0.8.1)
+    pony (1.11)
+      mail (>= 2.0)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -21,4 +26,5 @@ PLATFORMS
 
 DEPENDENCIES
   passenger (~> 5.0.0.beta1)
+  pony
   sinatra

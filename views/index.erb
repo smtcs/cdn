@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Summit CDN</title>
+    <link rel="stylesheet" href="/md/md.css"/>
+    <style>
+      * {
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome</h1>
+      <p>Summit Computer Science CDN (Content Delivery Network).</p>
+      <p>This server is powered by <a href="http://sinatrarb.com">sinatra</a> with <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">CORS</a> enabled so you can use it for link and script tags</p>
+      <h3><a href="http://getbootstrap.com">Bootstrap</a></h3>
+      <ul>
+        <li><a href="/bs/bs.css">v3.3.1 CSS</a></li>
+        <li><a href="/bs/bs.js">v3.3.1 JS</a></li>
+        <li><a href="/bs/theme.css">v3.3.1 Theme</a></li>
+        <li><a href="/bs/bs.css?v=2.3">v2.3.2 CSS</a></li>
+        <li><a href="/bs/bs.js?v=2.3">v2.3.2 JS</a></li>
+      </ul>
+      <h3><a href="http://jquery.com/">jQuery</a></h3>
+      <ul>
+        <li><a href="/jq/1.js">v1.11.1 JS</a></li>
+        <li><a href="/jq/2.js">v2.1.1 JS</a></li>
+      </ul>
+      <h3><a href="http://materializecss.com/">Materialize</a></h3>
+      <ul>
+        <li><a href="/md/md.css">v0.91 CSS</a></li>
+        <li><a href="/md/md.js">v0.91 JS</a></li>
+      </ul>
+      <h3><a href="http://photoswipe.com/">PhotoSwipe</a></h3>
+      <ul>
+        <li><a href="/ps/ps.css">v4.0.0 CSS</a></li>
+        <li><a href="/ps/ps.js">v4.0.0 JS</a></li>
+        <li><a href="/ps/ps-ui.js">v4.0.0 UI JS</a></li>
+        <li><a href="/ps/skin/skin.css">v4.0.0 Default CSS</a></li>
+      </ul>
+      <h3><a href="http://fontawesome.io/">Font Awesome</a></h3>
+      <ul>
+        <li><a href="/fa/fa.css">v4.2.0 CSS</a></li>
+      </ul>
+      <form action="/req" method="post">
+        <input type="text" name="name" id="name" placeholder="Your name" />
+        <input type="text" name="framework" id="fw" placeholder="Name of the framework" />
+        <input type="text" name="link" id="link" placeholder="Link to framework homepage" />
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

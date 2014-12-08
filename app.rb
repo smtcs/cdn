@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'pony'
 
 set :static_cache_control, [:public, max_age: 60 * 60 * 24 * 7]
 
@@ -33,8 +34,15 @@ before do
 end
 
 get '/' do
-  "<p>Summit Computer Science CDN (Content Delivery Network).</p>" +
-  "<p><a href=\"http://smtcs.rocks/blog/Libraries\">List</a> of the different libraries.</p>"
+  erb :index
+end
+
+post '/req' do
+  Pony.mail :to => "me@alexb.ninja",
+            :cc => "mhesby@summitps.org",
+            :from => "cdn@smtcs.rocks",
+            :subject => "#{params[:name]} Requested the #{params[:framework]}.",
+            :body => erb(:email)
 end
 
 get '/jq/:num.js' do
