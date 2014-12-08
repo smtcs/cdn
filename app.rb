@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'json'
 require 'pony'
 
 set :static_cache_control, [:public, max_age: 60 * 60 * 24 * 7]
@@ -38,11 +39,13 @@ get '/' do
 end
 
 post '/req' do
+  puts params.to_json
   Pony.mail :to => "me@alexb.ninja",
-            :cc => "mhesby@summitps.org",
+            # :cc => "mhesby@summitps.org",
             :from => "cdn@smtcs.rocks",
             :subject => "#{params[:name]} Requested the #{params[:framework]}.",
             :body => erb(:email)
+  erb :email_after
 end
 
 get '/jq/:num.js' do
