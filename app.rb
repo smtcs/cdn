@@ -78,6 +78,6 @@ get '/bs/fonts/glyphicons-halflings-regular.:ext' do
   serve 'bs/fonts', "glyphicons-halflings-regular.#{params[:ext]}"
 end
 
-get '/loaderio-f5bccfe4d01d364d939024c19dbee35d' do
+get '/loaderio-f5bccfe4d01d364d939024c19dbee35d/' do
   'loaderio-f5bccfe4d01d364d939024c19dbee35d'
 end
