@@ -4,6 +4,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Summit CDN</title>
     <link rel="stylesheet" href="/md/md.css"/>
+    <link rel="stylesheet" href="/hl/github.css">
     <style>
       * {
         outline: none;
@@ -17,7 +18,11 @@
       <p>This server is powered by <a href="http://sinatrarb.com">sinatra</a>
         with <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">CORS</a>
         enabled so you can use it for link and script tags</p>
+
       <h3><a href="http://getbootstrap.com">Bootstrap</a></h3>
+      <p>Bootstrap is a frontend framework that is very popular for things like its
+        <a href="http://getbootstrap.com/css/#grid">grid system</a> which helps you
+        layout your webpage.</p>
       <ul>
         <li><a href="/bs/bs.css">v3.3.1 CSS</a></li>
         <li><a href="/bs/bs.js">v3.3.1 JS</a></li>
@@ -25,31 +30,88 @@
         <li><a href="/bs/bs.css?v=2.3">v2.3.2 CSS</a></li>
         <li><a href="/bs/bs.js?v=2.3">v2.3.2 JS</a></li>
       </ul>
+      <pre><code>
+  &lt;link rel="stylesheet" href="//cdn.smtcs.rocks/bs/bs.css"&gt; &lt;!-- For v3.3.1 --&gt;
+  &lt;link rel="stylesheet" href="//cdn.smtcs.rocks/bs/theme.css"&gt; &lt;!-- For v3.3.1 --&gt;
+  &lt;script src="//cdn.smtcs.rocks/bs/bs.js"&gt;&lt;/script&gt; &lt;!-- For v3.3.1 --&gt;
+
+  &lt;link rel="stylesheet" href="//cdn.smtcs.rocks/bs/bs.css?v=2.3"&gt; &lt;!-- For v2.3.2 --&gt;
+  &lt;script src="//cdn.smtcs.rocks/bs/bs.js?v=2.3"&gt;&lt;/script&gt; &lt;!-- For v2.3.2 --&gt;
+      </code></pre>
+
       <h3><a href="http://jquery.com/">jQuery</a></h3>
+      <p>jQuery is a javascript framework that strives to be albe to use one function for all the browser APIs.</p>
       <ul>
-        <li><a href="/jq/1.js">v1.11.1 JS</a></li>
         <li><a href="/jq/2.js">v2.1.1 JS</a></li>
+        <li><a href="/jq/1.js">v1.11.1 JS</a></li>
       </ul>
+      <pre><code>
+  &lt;script src="//cdn.smtcs.rocks/jq/2.js"&gt;&lt;/script&gt; &lt;!-- For v2.1.1 --&gt;
+  &lt;script src="//cdn.smtcs.rocks/jq/1.js"&gt;&lt;/script&gt; &lt;!-- For v1.11.1 --&gt;
+      </code></pre>
+
+      <h3><a href="https://highlightjs.org/">Highlight JS</a></h3>
+      <p>Highlight.js is a javascript library that allows you to highlight code on webpages, such as this one.</p>
+      <ul>
+        <li><a href="/hl/hl.js">v8.4 JS</a></li>
+        <li><a href="https://highlightjs.org/static/demo/">many styles</a></li>
+      </ul>
+      <pre><code>
+  &lt;link rel="stylesheet" href="//cdn.smtcs.rocks/hl/default.css"&gt; &lt;!-- You can replace default with any of the styles from the list --&gt;
+  &lt;script src="//cdn.smtcs.rocks/hl/hl.js"&gt;&lt;/script&gt;
+  &lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;
+      </code></pre>
+
       <h3><a href="http://materializecss.com/">Materialize</a></h3>
+      <p>Materialize is a front end framework just like Bootstrap that follows the google's material design principals.</p>
       <ul>
         <li><a href="/md/md.css">v0.91 CSS</a></li>
         <li><a href="/md/md.js">v0.91 JS</a></li>
       </ul>
+      <pre><code>
+  &lt;link rel="stylesheet" href="//cdn.smtcs.rocks/md/md.css"&gt;
+  &lt;script src="//cdn.smtcs.rocks/md/md.js"&gt;&lt;/script&gt;
+      </code></pre>
+
       <h3><a href="http://photoswipe.com/">PhotoSwipe</a></h3>
+      <p>Photoswipe is a javascript library that allows you for a super lightweight lightbox that has no dependencies.</p>
       <ul>
         <li><a href="/ps/ps.css">v4.0.0 CSS</a></li>
         <li><a href="/ps/ps.js">v4.0.0 JS</a></li>
         <li><a href="/ps/ps-ui.js">v4.0.0 UI JS</a></li>
         <li><a href="/ps/skin/skin.css">v4.0.0 Default CSS</a></li>
       </ul>
+      <pre><code>
+  &lt;link rel="stylesheet" href="//cdn.smtcs.rocks/ps/ps.css"&gt;
+  &lt;link rel="stylesheet" href="//cdn.smtcs.rocks/ps/skin/skin.css"&gt; &lt;!-- optional --&gt;
+
+  &lt;script src="//cdn.smtcs.rocks/ps/ps.js"&gt;&lt;/script&gt;
+  &lt;script src="//cdn.smtcs.rocks/ps/ps-ui.js"&gt;&lt;/script&gt;
+      </code></pre>
+
       <h3><a href="http://fontawesome.io/">Font Awesome</a></h3>
+      <p>Font awesome is an awesome css icon set that is free for you to use.</p>
       <ul>
         <li><a href="/fa/fa.css">v4.2.0 CSS</a></li>
       </ul>
+      <pre><code>
+  &lt;link rel="stylesheet" href="//cdn.smtcs.rocks/fa/fa.css"&gt;
+      </code></pre>
+
+
       <h3>Framework Request</h3>
       <p>If you need to request any new framework please just hop into the
         <a href="https://kiwiirc.com/client/irc.freenode.com/?nick=framework-request|?#summitcs">#summitcs</a>
          irc channel </p>
+    <script src="/jq/2.js"></script>
+    <script src="/hl/hl.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+      });
+    </script>
     </div>
   </body>
 </html>

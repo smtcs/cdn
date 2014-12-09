@@ -149,3 +149,18 @@ get '/md/font/roboto/Roboto-:density.ttf' do
   Analytics.track(user_id: request.ip, event: "Hit materialize font")
   serve '/md/font/roboto', "Roboto-#{params[:density]}.ttf"
 end
+
+get '/hl/hl.js' do
+  Analytics.track(user_id: request.ip, event: "Hit Highlight.js")
+  serve 'hl', 'highlight.pack.js'
+end
+
+get '/hl/:name.css' do
+  Analytics.track(
+    user_id: request.ip,
+    event: "Hit hljs theme #{params[:name]}",
+    properties: {
+      name: params[:name]
+  })
+  serve 'hl/styles', "#{params[:name]}.css"
+end
