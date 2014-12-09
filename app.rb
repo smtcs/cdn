@@ -122,7 +122,7 @@ end
 
 get '/bs/theme.css' do
   Analytics.track(user_id: request.ip, event: "Hit bootstrap theme css")
-  serve 'bs', 'bootstrap-theme.css'
+  serve 'bs/3.3.1', 'bootstrap-theme.css'
 end
 
 get '/bs/fonts/glyphicons-halflings-regular.:ext' do

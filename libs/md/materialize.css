@@ -2818,8 +2818,8 @@ td, th {
 
 @font-face {
   font-family: "Material-Design-Icons";
-  src: url("./font/mdi/mdi.eot?-g7cqhn");
-  src: url("./font/mdi/mdi.eot?#iefix-g7cqhn") format("embedded-opentype"), url("./font/mdi/mdi.woff?-g7cqhn") format("woff"), url("./font/mdi/mdi.ttf?-g7cqhn") format("truetype"), url("./font/mdi/mdi.svg?-g7cqhn#mdi") format("svg");
+  src: url("./font/mdi/Material-Design-Icons.eot?-g7cqhn");
+  src: url("./font/mdi/Material-Design-Icons.eot?#iefix-g7cqhn") format("embedded-opentype"), url("./font/mdi/Material-Design-Icons.woff?-g7cqhn") format("woff"), url("./font/mdi/Material-Design-Icons.ttf?-g7cqhn") format("truetype"), url("./font/mdi/Material-Design-Icons.svg?-g7cqhn#mdi") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -6898,11 +6898,11 @@ ul.tabs li.tab {
 
 /*!
  * Waves v0.5.3
- * http://fian.my.id/Waves 
- * 
- * Copyright 2014 Alfiana E. Sibuea and other contributors 
- * Released under the MIT license 
- * https://github.com/fians/Waves/blob/master/LICENSE 
+ * http://fian.my.id/Waves
+ *
+ * Copyright 2014 Alfiana E. Sibuea and other contributors
+ * Released under the MIT license
+ * https://github.com/fians/Waves/blob/master/LICENSE
  */
 .waves-effect {
   position: relative;
@@ -7232,7 +7232,7 @@ textarea {
 }
 
 /***************
-  Radio Buttons 
+  Radio Buttons
 ***************/
 /* Remove default checkbox */
 [type="radio"]:not(:checked),
@@ -7327,7 +7327,7 @@ textarea {
 }
 
 /***************
-   Checkboxes 
+   Checkboxes
 ***************/
 /* CUSTOM CSS CHECKBOXES */
 form p {
@@ -7436,7 +7436,7 @@ form p:last-child {
 }
 
 /***************
-  Select Field 
+  Select Field
 ***************/
 .select-wrapper span.select-dropdown {
   position: relative;
@@ -7470,7 +7470,7 @@ select.disabled {
 }
 
 /***************
-      Range 
+      Range
 ***************/
 .range-field {
   position: relative;
