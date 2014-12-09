@@ -1,7 +1,5 @@
 require 'sinatra'
 require 'json'
-require 'pony'
-require 'rest_client'
 require 'segment/analytics'
 
 Analytics = Segment::Analytics.new({
@@ -44,17 +42,6 @@ end
 get '/' do
   Analytics.track(user_id: request.ip, event: 'Viewed Homepage')
   erb :index
-end
-
-post '/req' do
-  puts params.to_json
-  # Pony.mail :to => "me@alexb.ninja",
-  #           # :cc => "mhesby@summitps.org",
-  #           :from => "cdn@smtcs.rocks",
-  #           :subject => "#{params[:name]} Requested the #{params[:framework]} framework.",
-  #           :body => erb(:email)
-  RestClient.post 'http://summit-hubot.herokuapp.com/hubot/newfw', params.to_json, :content_type => :json, :accept => :json
-  erb :email_after
 end
 
 get '/jq/:num.js' do
