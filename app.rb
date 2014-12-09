@@ -40,7 +40,7 @@ before do
 end
 
 get '/' do
-  Analytics.track(user_id: request.ip, event: 'Viewed Homepage')
+  Analytics.track(user_id: request.ip, event: 'Hit Homepage')
   erb :index
 end
 
