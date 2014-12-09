@@ -1,10 +1,12 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    analytics-ruby (2.0.11)
     daemon_controller (1.2.0)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.4.3)
+    netrc (0.7.9)
     passenger (5.0.0.beta1)
       daemon_controller (>= 1.2.0)
       rack
@@ -15,6 +17,8 @@ GEM
     rack-protection (1.5.3)
       rack
     rake (10.4.2)
+    rest_client (1.8.2)
+      netrc (~> 0.7.7)
     sinatra (1.4.5)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -25,6 +29,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  analytics-ruby (~> 2.0.0)
   passenger (~> 5.0.0.beta1)
   pony
+  rest_client
   sinatra
