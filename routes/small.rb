@@ -58,6 +58,18 @@ module CDN
         })
         serve 'hl/styles', "#{params[:name]}.css"
       end
+
+      # Skeleton css
+      base.get '/sk.css' do
+        Analytics.track(user_id: request.ip, event: "Hit skeleton css")
+        serve '.', 'skeleton.css'
+      end
+
+      # Normalize css
+      base.get '/nl.css' do
+        Analytics.track(user_id: request.ip, event: "Hit normalize.css")
+        serve '.', 'normalize.css'
+      end
     end
   end
 end
