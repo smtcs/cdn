@@ -1,3 +1,3 @@
 require './app'
 use Rack::Deflater
-run Sinatra::Application
+run CDN::Main
