@@ -28,7 +28,6 @@ module CDN
       end
 
       Dir['./libs/pl/**/*'].each do |file|
-        puts file
         app.get file[6..file.length] do
           case file.split('.').last
           when "js"

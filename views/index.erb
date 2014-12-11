@@ -9,6 +9,15 @@
       * {
         outline: none;
       }
+      .tag {
+        padding: 2px;
+        background-color: #1E88E5;
+        border-radius: 5px;
+      }
+
+      .main-item {
+        margin: 5px;
+      }
     </style>
   </head>
   <body>
@@ -19,7 +28,19 @@
         with <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">CORS</a>
         enabled so you can use it for link and script tags</p>
 
-      <h3><a href="http://getskeleton.com">Skeleton</a></h3>
+      <h4>List of frameworks provided</h4>
+      <ul>
+        <li class="main-item"><a href="#skeleton">Skeleton</a> <span class="tag panel">CSS</span></li>
+        <li class="main-item"><a href="#bootstrap">Bootstrap</a> <span class="tag">CSS</span> <span class="tag">JS</span></li>
+        <li class="main-item"><a href="#materialize">Materialize</a> <span class="tag">CSS</span> <span class="tag">JS</span></li>
+        <li class="main-item"><a href="#jquery">jQuery</a> <span class="tag">JS</span></li>
+        <li class="main-item"><a href="#hljs">Highlight JS</a> <span class="tag">JS</span></li>
+        <li class="main-item"><a href="#polymer">Polymer</a> <span class="tag">HTML</span> <span class="tag">JS</span></li>
+        <li class="main-item"><a href="#photoswipe">Photoswipe</a> <span class="tag">JS</span></li>
+        <li class="main-item"><a href="#fontawesome">Font awesome</a> <span class="tag">CSS</span></li>
+      </ul>
+
+      <h3 id="skeleton"><a href="http://getskeleton.com">Skeleton</a></h3>
       <a href="http://getskeleton.com/#intro" class="waves-effect waves-light btn-large"><i class="mdi-action-subject left"></i>Documentation</a>
       <p>Skeleton is a great css framework if you are just starting to use css fameworks. It has a lot of the basics that are included in every framework.</p>
       <ul>
@@ -29,7 +50,7 @@
   &lt;link rel="stylesheet" href="//cdn.smtcs.rocks/sk.css"&gt;
       </code></pre>
 
-      <h3><a href="http://getbootstrap.com">Bootstrap</a></h3>
+      <h3 id="bootstrap"><a href="http://getbootstrap.com">Bootstrap</a></h3>
       <a href="http://getbootstrap.com/css/" class="waves-effect waves-light btn-large"><i class="mdi-action-subject left"></i>Documentation</a>
       <p>Bootstrap is a frontend framework that is very popular for things like its
         <a href="http://getbootstrap.com/css/#grid">grid system</a> which helps you
@@ -50,7 +71,19 @@
   &lt;script src="//cdn.smtcs.rocks/bs/bs.js?v=2.3"&gt;&lt;/script&gt; &lt;!-- For v2.3.2 --&gt;
       </code></pre>
 
-      <h3><a href="http://jquery.com/">jQuery</a></h3>
+      <h3 id="materialize"><a href="http://materializecss.com/">Materialize</a></h3>
+      <a href="http://materializecss.com/components.html" class="waves-effect waves-light btn-large"><i class="mdi-action-subject left"></i>Documentation</a>
+      <p>Materialize is a front end framework just like Bootstrap that follows the google's material design principals.</p>
+      <ul>
+        <li><a href="/md/md.css">v0.91 CSS</a> 146 KB</li>
+        <li><a href="/md/md.js">v0.91 JS</a> 240 KB</li>
+      </ul>
+      <pre><code>
+  &lt;link rel="stylesheet" href="//cdn.smtcs.rocks/md/md.css"&gt;
+  &lt;script src="//cdn.smtcs.rocks/md/md.js"&gt;&lt;/script&gt;
+      </code></pre>
+
+      <h3 id="jquery"><a href="http://jquery.com/">jQuery</a></h3>
       <a href="https://api.jquery.com/" class="waves-effect waves-light btn-large"><i class="mdi-action-subject left"></i>Documentation</a>
       <p>jQuery is a javascript framework that strives to be albe to use one function for all the browser APIs.</p>
       <ul>
@@ -62,7 +95,7 @@
   &lt;script src="//cdn.smtcs.rocks/jq/1.js"&gt;&lt;/script&gt; &lt;!-- For v1.11.1 --&gt;
       </code></pre>
 
-      <h3><a href="https://highlightjs.org/">Highlight JS</a></h3>
+      <h3 id="hljs"><a href="https://highlightjs.org/">Highlight JS</a></h3>
       <a href="https://highlightjs.org/usage/" class="waves-effect waves-light btn-large"><i class="mdi-action-subject left"></i>Documentation</a>
       <p>Highlight.js is a javascript library that allows you to highlight code on webpages, such as this one.</p>
       <ul>
@@ -75,19 +108,19 @@
   &lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;
       </code></pre>
 
-      <h3><a href="http://materializecss.com/">Materialize</a></h3>
-      <a href="http://materializecss.com/components.html" class="waves-effect waves-light btn-large"><i class="mdi-action-subject left"></i>Documentation</a>
-      <p>Materialize is a front end framework just like Bootstrap that follows the google's material design principals.</p>
+      <h3 id="polymer"><a href="https://polymer-project.org">Polymer</a></h3>
+      <a href="https://www.polymer-project.org/docs/start/creatingelements.html" class="waves-effect waves-light btn-large"><i class="mdi-action-subject left"></i>Documentation</a>
+      <p>Polymer is this new thing that allows you to use these things called web components which allow you to create your own html elements with js to back them up.</p>
       <ul>
-        <li><a href="/md/md.css">v0.91 CSS</a> 146 KB</li>
-        <li><a href="/md/md.js">v0.91 JS</a> 240 KB</li>
+        <li><a href="/pl/pl.html">v0.5.1 HTML</a> 82.2 KB</li>
+        <li><a href="/pl/wc.js">v0.5.1 Webcomponents.js</a> 42.6 KB</li>
       </ul>
       <pre><code>
-  &lt;link rel="stylesheet" href="//cdn.smtcs.rocks/md/md.css"&gt;
-  &lt;script src="//cdn.smtcs.rocks/md/md.js"&gt;&lt;/script&gt;
+  &lt;link rel="import" href="//cdn.smtcs.rocks/pl/pl.html"&gt;
+  &lt;script src="//cdn.smtcs.rocks/pl/wc.js"&gt;&lt;/script&gt; &lt;!-- Compatability with Older browsers --&gt;
       </code></pre>
 
-      <h3><a href="http://photoswipe.com/">PhotoSwipe</a></h3>
+      <h3 id="photoswipe"><a href="http://photoswipe.com/">PhotoSwipe</a></h3>
       <a href="http://photoswipe.com/documentation/options.html" class="waves-effect waves-light btn-large"><i class="mdi-action-subject left"></i>Documentation</a>
       <p>Photoswipe is a javascript library that allows you for a super lightweight lightbox that has no dependencies.</p>
       <ul>
@@ -104,7 +137,7 @@
   &lt;script src="//cdn.smtcs.rocks/ps/ps-ui.js"&gt;&lt;/script&gt;
       </code></pre>
 
-      <h3><a href="http://fontawesome.io/">Font Awesome</a></h3>
+      <h3 id="fontawesome"><a href="http://fontawesome.io/">Font Awesome</a></h3>
       <a href="http://fontawesome.io/examples/" class="waves-effect waves-light btn-large"><i class="mdi-action-subject left"></i>Documentation</a>
       <p>Font awesome is an awesome css icon set that is free for you to use.</p>
       <ul>
