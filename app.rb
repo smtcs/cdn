@@ -3,21 +3,22 @@ require 'sinatra/multi_route'
 require 'segment/analytics'
 
 # Routes
-require './routes/small'
-require './routes/photoswipe'
-require './routes/cssframeworks'
-require './routes/polymer'
+require_relative 'routes/misc'
+require_relative 'routes/photoswipe'
+require_relative 'routes/cssframeworks'
+require_relative 'routes/polymer'
 
 Analytics = Segment::Analytics.new({
   write_key: 'VOkH1POOQZ2csVKeZ2fLKjETIRFHD0Eo',
   on_error: Proc.new { |status, msg| print msg }
 })
+
 module CDN
   class Main < Sinatra::Base
     register Sinatra::MultiRoute
 
     # Include route block
-    include CDN::SmallRoutes
+    include CDN::Misc
     include CDN::PhotoSwipe
     include CDN::CSSFramework
     include CDN::Polymer

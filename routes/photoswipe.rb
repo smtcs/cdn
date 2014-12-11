@@ -1,8 +1,8 @@
 module CDN
   module PhotoSwipe
-    def self.included(base)
+    def self.included(app)
       # PhotoSwipe
-      base.get '/ps/ps.:ext' do
+      app.get '/ps/ps.:ext' do
         Analytics.track(
           user_id: request.ip,
           event: "Hit photoswipe #{params[:ext]}",
@@ -13,13 +13,13 @@ module CDN
       end
 
       # Photoswipe UI
-      base.get '/ps/ps-ui.js' do
+      app.get '/ps/ps-ui.js' do
         Analytics.track(user_id: request.ip, event: "Hit Photoswipe ui")
         serve 'ps', 'photoswipe-ui-default.js'
       end
 
       # Photoswipe Skin
-      base.get '/ps/skin/skin.:ext' do
+      app.get '/ps/skin/skin.:ext' do
         Analytics.track(
           user_id: request.ip,
           event: "Hit photoswipe skin #{params[:ext]}",
@@ -30,7 +30,7 @@ module CDN
       end
 
       # Photoswipe Skin preloader
-      base.get '/ps/skin/preloader.gif' do
+      app.get '/ps/skin/preloader.gif' do
         Analytics.track(user_id: request.ip, event: "Hit photoswipe preloader")
         serve 'ps/skin', 'preloader.gif'
       end
