@@ -70,6 +70,11 @@ module CDN
         Analytics.track(user_id: request.ip, event: "Hit normalize.css")
         serve '.', 'normalize.css'
       end
+
+      app.get '/sm.css' do
+        Analytics.track(user_id: request.ip, event: "Hit simple.css")
+        serve '.', 'simple.css'
+      end
     end
   end
 end
