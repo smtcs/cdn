@@ -13,19 +13,19 @@ module CDN
             ext: params[:ext],
             version: params[:v]
         })
-        serve "bs/#{params[:v]}", "bootstrap.#{params[:ext]}"
+        serve "bootstrap/#{params[:v]}", "bootstrap.#{params[:ext]}"
       end
 
       # Bootstrap theme for 3.3.1
       app.get '/bs/theme.css' do
         Analytics.track(user_id: request.ip, event: "Hit bootstrap theme css")
-        serve 'bs/3.3.1', 'bootstrap-theme.css'
+        serve 'bootstrap/3.3.1', 'bootstrap-theme.css'
       end
 
       # Bootstrap Icon font
       app.get '/bs/fonts/glyphicons-halflings-regular.:ext' do
         Analytics.track(user_id: request.ip, event: "Hit bootstrap font")
-        serve 'bs/fonts', "glyphicons-halflings-regular.#{params[:ext]}"
+        serve 'bootstrap/fonts', "glyphicons-halflings-regular.#{params[:ext]}"
       end
 
       # Material Design
@@ -36,19 +36,19 @@ module CDN
           properties: {
             ext: params[:ext]
         })
-        serve 'md', "materialize.#{params[:ext]}"
+        serve 'materialize', "materialize.#{params[:ext]}"
       end
 
       # Material Design icon font
       app.get '/md/font/mdi/Material-Design-Icons.:ext' do
         Analytics.track(user_id: request.ip, event: "Hit materialize icons")
-        serve 'md/font/mdi', "Material-Design-Icons.#{params[:ext]}"
+        serve 'materialize/font/mdi', "Material-Design-Icons.#{params[:ext]}"
       end
 
       # Material Design font
       app.get '/md/font/roboto/Roboto-:density.ttf' do
         Analytics.track(user_id: request.ip, event: "Hit materialize font")
-        serve '/md/font/roboto', "Roboto-#{params[:density]}.ttf"
+        serve 'materialize/font/roboto', "Roboto-#{params[:density]}.ttf"
       end
     end
   end

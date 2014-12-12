@@ -4,30 +4,30 @@ module CDN
       # Polymer
       app.get '/pl/pl.html', '/pl/polymer/polymer.html' do
         Analytics.track(user_id: request.ip, event: "Hit polymer core lib")
-        serve 'pl', 'polymer.html'
+        serve 'polymer', 'polymer.html'
       end
 
       # Web component polyfill
       app.get '/pl/wc.js' do
         Analytics.track(user_id: request.ip, event: "Hit web component polyfill")
-        serve 'pl', 'webcomponents.js'
+        serve 'polymer', 'webcomponents.js'
       end
 
       # Polymer layout (for polymer.html)
       app.get '/pl/layout.html', '/pl/polymer/layout.html' do
-        serve 'pl', 'layout.html'
+        serve 'polymer', 'layout.html'
       end
 
       app.get '/pl/polymer/layout.html' do
-        serve 'pl', 'layout.html'
+        serve 'polymer', 'layout.html'
       end
 
       # Polymer js (for polymer.html)
       app.get '/pl/polymer.js', '/pl/polymer/polymer.js' do
-        serve 'pl', 'polymer.js'
+        serve 'polymer', 'polymer.js'
       end
 
-      Dir['./libs/pl/**/*'].each do |file|
+      Dir['./libs/polymer/**/*'].each do |file|
         app.get file[6..file.length] do
           case file.split('.').last
           when "js"

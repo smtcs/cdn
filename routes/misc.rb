@@ -16,7 +16,7 @@ module CDN
             url: request.path_info,
             verison: params[:num]
         })
-        serve 'jq', "jquery-#{params[:num]}.js"
+        serve 'jquery', "jquery-#{params[:num]}.js"
       end
 
       # Font Awesome
@@ -27,7 +27,7 @@ module CDN
           properties: {
             verison: "4.2.0"
         })
-        serve 'fa', 'fa.css'
+        serve 'fontawesome', 'fa.css'
       end
 
       # Font Awesome Font
@@ -39,13 +39,13 @@ module CDN
             ext: params[:ext],
             verison: params[:num]
         })
-        serve 'fa/fonts', "fontawesome-webfont.#{params[:ext]}"
+        serve 'fontawesome/fonts', "fontawesome-webfont.#{params[:ext]}"
       end
 
       # Highlight JS
       app.get '/hl/hl.js' do
         Analytics.track(user_id: request.ip, event: "Hit Highlight.js")
-        serve 'hl', 'highlight.pack.js'
+        serve 'hljs', 'highlight.pack.js'
       end
 
       # Highlight JS Theme
@@ -56,7 +56,7 @@ module CDN
           properties: {
             name: params[:name]
         })
-        serve 'hl/styles', "#{params[:name]}.css"
+        serve 'hljs/styles', "#{params[:name]}.css"
       end
 
       # Skeleton css

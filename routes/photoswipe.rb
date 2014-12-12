@@ -9,13 +9,13 @@ module CDN
           properties: {
             ext: params[:ext]
         })
-        serve 'ps', "photoswipe.#{params[:ext]}"
+        serve 'photoswipe', "photoswipe.#{params[:ext]}"
       end
 
       # Photoswipe UI
       app.get '/ps/ps-ui.js' do
         Analytics.track(user_id: request.ip, event: "Hit Photoswipe ui")
-        serve 'ps', 'photoswipe-ui-default.js'
+        serve 'photoswipe', 'photoswipe-ui-default.js'
       end
 
       # Photoswipe Skin
@@ -26,13 +26,13 @@ module CDN
           properties: {
             ext: params[:ext]
         })
-        serve 'ps/skin', "default-skin.#{params[:ext]}"
+        serve 'photoswipe/skin', "default-skin.#{params[:ext]}"
       end
 
       # Photoswipe Skin preloader
       app.get '/ps/skin/preloader.gif' do
         Analytics.track(user_id: request.ip, event: "Hit photoswipe preloader")
-        serve 'ps/skin', 'preloader.gif'
+        serve 'photoswipe/skin', 'preloader.gif'
       end
     end
   end
