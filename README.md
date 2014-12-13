@@ -162,4 +162,4 @@ Font awesome is an awesome css icon set that is free for you to use.
 
 ## Framework request
 
-If you need to request any new framework please just hop into the [#summitcs](http://irc.summit.com) irc channel
+If you need to request any new framework please just hop into the [#summitcs](http://irc.smtcs.rocks) irc channel
