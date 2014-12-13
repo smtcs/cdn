@@ -15,9 +15,9 @@ This server is powered by [sinatra](http://sinatrarb.com/) with [CORS](https://e
 | [Skeleton](#skeleton)        | Yes | No  | No   |
 | [Bootstrap](#bootstrap)      | Yes | Yes | No   |
 | [Materialize](#materialize)  | Yes | Yes | No   |
-| [Simple.css](#simplecss)        | Yes | No  | No   |
+| [Simple.css](#simplecss)     | Yes | No  | No   |
 | [jQuery](#jquery)            | No  | Yes | No   |
-| [Highlight.js](#hljs)        | Yes | Yes | No   |
+| [Highlight.js](#Highlightjs) | Yes | Yes | No   |
 | [Polymer](#polymer)          | No  | Yes | Yes  |
 | [Photoswipe](#photoswipe)    | No  | Yes | No   |
 | [Font Awesome](#fontawesome) | Yes | No  | No   |
