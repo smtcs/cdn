@@ -17,10 +17,10 @@ This server is powered by [sinatra](http://sinatrarb.com/) with [CORS](https://e
 | [Materialize](#materialize)  | Yes | Yes | No   |
 | [Simple.css](#simplecss)     | Yes | No  | No   |
 | [jQuery](#jquery)            | No  | Yes | No   |
-| [Highlight.js](#highlightjs) | Yes | Yes | No   |
+| [Highlight.js](#hightlightjs)| Yes | Yes | No   |
 | [Polymer](#polymer)          | No  | Yes | Yes  |
 | [Photoswipe](#photoswipe)    | No  | Yes | No   |
-| [Font Awesome](#fontawesome) | Yes | No  | No   |
+| [Font Awesome](#font-awesome)| Yes | No  | No   |
 
 ### [Skeleton](http://getskeleton.com/)
 
