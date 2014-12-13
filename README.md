@@ -10,17 +10,17 @@ This server is powered by [sinatra](http://sinatrarb.com/) with [CORS](https://e
 
 ## List of frameworks
 
-| Framework                    | CSS | JS  | HTML |
-|------------------------------|-----|-----|------|
-| [Skeleton](#skeleton)        | Yes | No  | No   |
-| [Bootstrap](#bootstrap)      | Yes | Yes | No   |
-| [Materialize](#materialize)  | Yes | Yes | No   |
-| [Simple.css](#simplecss)     | Yes | No  | No   |
-| [jQuery](#jquery)            | No  | Yes | No   |
-| [Highlight.js](#hightlightjs)| Yes | Yes | No   |
-| [Polymer](#polymer)          | No  | Yes | Yes  |
-| [Photoswipe](#photoswipe)    | No  | Yes | No   |
-| [Font Awesome](#font-awesome)| Yes | No  | No   |
+| Framework       | CSS | JS  | HTML |
+|-----------------|-----|-----|------|
+| Skeleton        | Yes | No  | No   |
+| Bootstrap       | Yes | Yes | No   |
+| Materialize     | Yes | Yes | No   |
+| Simple.css      | Yes | No  | No   |
+| jQuery          | No  | Yes | No   |
+| Highlight.js    | Yes | Yes | No   |
+| Polymer         | No  | Yes | Yes  |
+| Photoswipe      | No  | Yes | No   |
+| Font Awesome    | Yes | No  | No   |
 
 ### [Skeleton](http://getskeleton.com/)
 
