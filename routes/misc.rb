@@ -23,7 +23,7 @@ module CDN
       app.get '/fa/fa.css' do
         Analytics.track(
           user_id: request.ip,
-          event: "Hit fontawesome",
+          event: 'Hit fontawesome',
           properties: {
             verison: "4.2.0"
         })
@@ -44,7 +44,7 @@ module CDN
 
       # Highlight JS
       app.get '/hl/hl.js' do
-        Analytics.track(user_id: request.ip, event: "Hit Highlight.js")
+        Analytics.track(user_id: request.ip, event: 'Hit Highlight.js')
         serve 'hljs', 'highlight.pack.js'
       end
 
@@ -61,18 +61,18 @@ module CDN
 
       # Skeleton css
       app.get '/sk.css' do
-        Analytics.track(user_id: request.ip, event: "Hit skeleton css")
+        Analytics.track(user_id: request.ip, event: 'Hit skeleton css')
         serve '.', 'skeleton.css'
       end
 
       # Normalize css
       app.get '/nl.css' do
-        Analytics.track(user_id: request.ip, event: "Hit normalize.css")
+        Analytics.track(user_id: request.ip, event: 'Hit normalize.css')
         serve '.', 'normalize.css'
       end
 
       app.get '/sm.css' do
-        Analytics.track(user_id: request.ip, event: "Hit simple.css")
+        Analytics.track(user_id: request.ip, event: 'Hit simple.css')
         serve '.', 'simple.css'
       end
     end
