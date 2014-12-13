@@ -150,7 +150,7 @@ Photoswipe is a javascript library that allows you for a super lightweight light
   
 ### Font Awesome
 
-[Link, last]((http://fontawesome.io/))
+[Link](http://fontawesome.io/)
 
 Font awesome is an awesome css icon set that is free for you to use.
 
