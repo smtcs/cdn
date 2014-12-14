@@ -122,6 +122,7 @@ Highlight.js is a javascript library that allows you to highlight code on webpag
 
 - [Website](https://polymer-project.org/)
 - [Documentation](https://www.polymer-project.org/docs/polymer/polymer.html)
+- [Elements](https://www.polymer-project.org/docs/elements/)
 
 Polymer is this new thing that allows you to use these things called web components which allow you to create your own html elements with js to back them up.
 
