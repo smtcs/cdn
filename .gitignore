@@ -3,3 +3,4 @@ tmp/
 .idea/
 .bundle/
 vendor/
+views/test.erb

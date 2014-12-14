@@ -14,7 +14,7 @@ module CDN
 
       app.get '/test' do
         Analytics.track(user_id: request.ip, event: 'Hit tests')
-        erb :tests
+        erb :test
       end
 
       # Jquery
