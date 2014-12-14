@@ -71,7 +71,7 @@ Materialize is a front end framework just like Bootstrap that follows the google
 
 ### Simple.css
 
-[Link]((http://simplecss.algorithm.dk/))
+[Link](http://simplecss.algorithm.dk/)
 
 Simple.css is a simple css framework for just starting out a project with.
 
