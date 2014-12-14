@@ -59,7 +59,8 @@ module CDN
         'Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept'
     end
 
-    # Run if app file is called directly
-    run! if app_file == $0
+    not_found do
+      status 404
+    end
   end
 end
