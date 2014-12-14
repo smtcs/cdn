@@ -18,10 +18,6 @@ module CDN
         serve 'polymer', 'layout.html'
       end
 
-      app.get '/pl/polymer/layout.html' do
-        serve 'polymer', 'layout.html'
-      end
-
       # Polymer js (for polymer.html)
       app.get '/pl/polymer.js', '/pl/polymer/polymer.js' do
         serve 'polymer', 'polymer.js'

@@ -1,5 +1,45 @@
 require_relative '../spec_helper'
 
 describe 'Polymer routes', :type => :feature do
+  it 'html should 200' do
+    visit '/pl/pl.html'
+    page.status_code.should == 200
+  end
 
+  it 'js should 200' do
+    visit '/pl/polymer.js'
+    page.status_code.should == 200
+  end
+
+  it 'wc should 200' do
+    visit '/pl/wc.js'
+    page.status_code.should == 200
+  end
+
+  it 'layout should 200' do
+    visit '/pl/layout.html'
+    page.status_code.should == 200
+  end
+
+  describe 'custom elements', :type => :feature do
+    describe 'paper', :type => :feature do
+      Dir['./libs/polymer/**/paper-*.html'].each do |file|
+        name = file[15..file.length]
+        it "#{name} should 200" do
+          visit "/polymer/#{name}"
+          page.status_code.should == 200
+        end
+      end
+    end
+
+    describe 'core', :type => :feature do
+      Dir['./libs/polymer/**/core-*.html'].each do |file|
+        name = file[15..file.length]
+        it "#{name} should 200" do
+          visit "/polymer/#{name}"
+          page.status_code.should == 200
+        end
+      end
+    end
+  end
 end
