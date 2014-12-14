@@ -12,6 +12,11 @@ module CDN
         erb :old
       end
 
+      app.get '/test' do
+        Analytics.track(user_id: request.ip, event: 'Hit tests')
+        erb :tests
+      end
+
       # Jquery
       app.get '/jq/:num.js' do
         Analytics.track(
