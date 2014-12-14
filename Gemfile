@@ -7,11 +7,8 @@ gem 'sinatra-contrib'
 gem 'analytics-ruby', '~> 2.0.0', :require => 'segment/analytics'
 gem 'rake'
 gem 'rspec'
+gem 'capybara', '~> 2.1.0'
 
 group :produciton do
   gem 'passenger', '~> 5.0.0.beta1'
-end
-
-group :test do
-  gem 'capybara', '~> 2.1.0'
 end
