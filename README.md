@@ -31,7 +31,7 @@ Skeleton is a great css framework if you are just starting to use css fameworks.
 - [v2.0 CSS](http://cdn.smtcs.rocks/sk.css) 11.0 KB
 
 ```html
-<link rel="stylesheet" href="//cdn.smtcs.rocks/sk.css">
+<link rel="stylesheet" href="http://cdn.smtcs.rocks/sk.css">
 ```
 
 ### Bootstrap
@@ -47,12 +47,12 @@ Bootstrap is a frontend framework that is very popular for things like its [grid
 - [v2.3.2 JS](http://cdn.smtcs.rocks/bs/bs.js?v=2.3) 60.8 KB
 
 ```html
-<link rel="stylesheet" href="//cdn.smtcs.rocks/bs/bs.css"> <!-- For v3.3.1 -->
-<link rel="stylesheet" href="//cdn.smtcs.rocks/bs/theme.css"> <!-- For v3.3.1 -->
-<script src="//cdn.smtcs.rocks/bs/bs.js"></script> <!-- For v3.3.1 -->
+<link rel="stylesheet" href="http://cdn.smtcs.rocks/bs/bs.css"> <!-- For v3.3.1 -->
+<link rel="stylesheet" href="http://cdn.smtcs.rocks/bs/theme.css"> <!-- For v3.3.1 -->
+<script src="http://cdn.smtcs.rocks/bs/bs.js"></script> <!-- For v3.3.1 -->
 
-<link rel="stylesheet" href="//cdn.smtcs.rocks/bs/bs.css?v=2.3"> <!-- For v2.3.2 -->
-<script src="//cdn.smtcs.rocks/bs/bs.js?v=2.3"></script> <!-- For v2.3.2 -->
+<link rel="stylesheet" href="http://cdn.smtcs.rocks/bs/bs.css?v=2.3"> <!-- For v2.3.2 -->
+<script src="http://cdn.smtcs.rocks/bs/bs.js?v=2.3"></script> <!-- For v2.3.2 -->
 ```
 
 ### Materialize
@@ -65,8 +65,8 @@ Materialize is a front end framework just like Bootstrap that follows the google
 - [v0.91 JS](http://cdn.smtcs.rocks/md/md.js) 240 KB
 
 ```html
-<link rel="stylesheet" href="//cdn.smtcs.rocks/md/md.css">
-<script src="//cdn.smtcs.rocks/md/md.js"></script>
+<link rel="stylesheet" href="http://cdn.smtcs.rocks/md/md.css">
+<script src="http://cdn.smtcs.rocks/md/md.js"></script>
 ```
 
 ### Simple.css
@@ -78,7 +78,7 @@ Simple.css is a simple css framework for just starting out a project with.
 - [v0.0.1 CSS](http://cdn.smtcs.rocks/sm.css) 3.7 KB
 
 ```html
-<link rel="stylesheet" href="//cdn.smtcs.rocks/sm.css">
+<link rel="stylesheet" href="http://cdn.smtcs.rocks/sm.css">
 ```
 
 ### jQuery
@@ -91,8 +91,8 @@ jQuery is a javascript framework that strives to be albe to use one function for
 - [v1.11.1 JS](http://cdn.smtcs.rocks/jq/1.js) 276 KB
 
 ```html
-<script src="//cdn.smtcs.rocks/jq/2.js"></script> <!-- For v2.1.1 -->
-<script src="//cdn.smtcs.rocks/jq/1.js"></script> <!-- For v1.11.1 -->
+<script src="http://cdn.smtcs.rocks/jq/2.js"></script> <!-- For v2.1.1 -->
+<script src="http://cdn.smtcs.rocks/jq/1.js"></script> <!-- For v1.11.1 -->
 ```
 
 ### Hightlight.js
@@ -105,9 +105,9 @@ Highlight.js is a javascript library that allows you to highlight code on webpag
 - [Many Styles](https://highlightjs.org/static/demo/)
 
 ```html
-<link rel="stylesheet" href="//cdn.smtcs.rocks/hl/default.css">
+<link rel="stylesheet" href="http://cdn.smtcs.rocks/hl/default.css">
 <!-- You can replace default with any of the styles from the list -->
-<script src="//cdn.smtcs.rocks/hl/hl.js"></script>
+<script src="http://cdn.smtcs.rocks/hl/hl.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 ```
 
@@ -122,10 +122,10 @@ Polymer is this new thing that allows you to use these things called web compone
 - [Many Elements](https://www.polymer-project.org/docs/elements/)
 
 ```html
-<link rel="import" href="//cdn.smtcs.rocks/pl/pl.html">
-<script src="//cdn.smtcs.rocks/pl/wc.js"></script> <!-- Compatability with Older browsers -->
+<link rel="import" href="http://cdn.smtcs.rocks/pl/pl.html">
+<script src="http://cdn.smtcs.rocks/pl/wc.js"></script> <!-- Compatability with Older browsers -->
 
-<link rel="import" href="//cdn.smtcs.rocks/pl/paper-button/paper-button.html">
+<link rel="import" href="http://cdn.smtcs.rocks/pl/paper-button/paper-button.html">
 <!-- Replace paper-button with any polymer element in the docs, link above-->
 ```
 
@@ -141,13 +141,13 @@ Photoswipe is a javascript library that allows you for a super lightweight light
 - [v4.0.0 Default CSS](http://cdn.smtcs.rocks/ps/skin/skin.css) 10.1 KB
 
 ```html
-<link rel="stylesheet" href="//cdn.smtcs.rocks/ps/ps.css">
-<link rel="stylesheet" href="//cdn.smtcs.rocks/ps/skin/skin.css"> <!-- optional -->
+<link rel="stylesheet" href="http://cdn.smtcs.rocks/ps/ps.css">
+<link rel="stylesheet" href="http://cdn.smtcs.rocks/ps/skin/skin.css"> <!-- optional -->
 
-<script src="//cdn.smtcs.rocks/ps/ps.js"></script>
-<script src="//cdn.smtcs.rocks/ps/ps-ui.js"></script>
+<script src="http://cdn.smtcs.rocks/ps/ps.js"></script>
+<script src="http://cdn.smtcs.rocks/ps/ps-ui.js"></script>
   ```
-  
+
 ### Font Awesome
 
 [Link](http://fontawesome.io/)
@@ -157,7 +157,7 @@ Font awesome is an awesome css icon set that is free for you to use.
 - [v4.2.0 CSS](http://cdn.smtcs.rocks/fa/fa.css) 26.3 KB
 
 ```html
-<link rel="stylesheet" href="//cdn.smtcs.rocks/fa/fa.css">
+<link rel="stylesheet" href="http://cdn.smtcs.rocks/fa/fa.css">
 ```
 
 ## Framework request
