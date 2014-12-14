@@ -24,7 +24,7 @@ This server is powered by [sinatra](http://sinatrarb.com/) with [CORS](https://e
 
 ### Skeleton
 
-[Link](http://getskeleton.com/)
+- [Website & Documentation](http://getskeleton.com/)
 
 Skeleton is a great css framework if you are just starting to use css fameworks. It has a lot of the basics that are included in every framework.
 
@@ -36,7 +36,10 @@ Skeleton is a great css framework if you are just starting to use css fameworks.
 
 ### Bootstrap
 
-[Link](http://getbootstrap.com)
+- [Website](http://getbootstrap.com)
+- [Documentation - css](http://getbootstrap.com/css/)
+- [Documentation - components](http://getbootstrap.com/components/)
+- [Documentation - javascript](http://getbootstrap.com/javascript/)
 
 Bootstrap is a frontend framework that is very popular for things like its [grid system](http://getbootstrap.com/css/#grid) which helps you layout your webpage.
 
@@ -57,7 +60,9 @@ Bootstrap is a frontend framework that is very popular for things like its [grid
 
 ### Materialize
 
-[Link](http://materializecss.com/)
+- [Website](http://materializecss.com/)
+- [Documentation - css](http://materializecss.com/components.html)
+- [Documentation - javascript](http://materializecss.com/javascript.html)
 
 Materialize is a front end framework just like Bootstrap that follows the google's material design principals.
 
@@ -71,7 +76,7 @@ Materialize is a front end framework just like Bootstrap that follows the google
 
 ### Simple.css
 
-[Link](http://simplecss.algorithm.dk/)
+- [Website & Documentation](http://simplecss.algorithm.dk/)
 
 Simple.css is a simple css framework for just starting out a project with.
 
@@ -83,7 +88,8 @@ Simple.css is a simple css framework for just starting out a project with.
 
 ### jQuery
 
-[Link](http://jquery.com/)
+- [Website](http://jquery.com/)
+- [Documentation](http://api.jquery.com/)
 
 jQuery is a javascript framework that strives to be albe to use one function for all the browser APIs.
 
@@ -97,7 +103,8 @@ jQuery is a javascript framework that strives to be albe to use one function for
 
 ### Hightlight.js
 
-[Link](https://highlightjs.org/)
+- [Website](https://highlightjs.org/)
+- [Documentation](https://highlightjs.org/usage/)
 
 Highlight.js is a javascript library that allows you to highlight code on webpages.
 
@@ -113,7 +120,8 @@ Highlight.js is a javascript library that allows you to highlight code on webpag
 
 ### Polymer
 
-[Link](https://polymer-project.org/)
+- [Website](https://polymer-project.org/)
+- [Documentation](https://www.polymer-project.org/docs/polymer/polymer.html)
 
 Polymer is this new thing that allows you to use these things called web components which allow you to create your own html elements with js to back them up.
 
@@ -131,7 +139,8 @@ Polymer is this new thing that allows you to use these things called web compone
 
 ### Photoswipe
 
-[Link](http://photoswipe.com/)
+- [Website](http://photoswipe.com/)
+- [Documentation](http://photoswipe.com/documentation/getting-started.html)
 
 Photoswipe is a javascript library that allows you for a super lightweight lightbox that has no dependencies.
 
@@ -150,7 +159,9 @@ Photoswipe is a javascript library that allows you for a super lightweight light
 
 ### Font Awesome
 
-[Link](http://fontawesome.io/)
+- [Website](http://fontawesome.io/)
+- [List of Icons](http://fontawesome.io/icons/)
+- [Examples of Use](http://fontawesome.io/examples/)
 
 Font awesome is an awesome css icon set that is free for you to use.
 
