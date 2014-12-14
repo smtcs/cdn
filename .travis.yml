@@ -8,4 +8,3 @@ deploy:
   app: summitcdn
   on:
     repo: everestps/cdn
-  run: "rake html"
