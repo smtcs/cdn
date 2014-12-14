@@ -57,6 +57,6 @@ DEPENDENCIES
   capybara (~> 2.1.0)
   passenger (~> 5.0.0.beta1)
   rake
-  rspec (~> 2.13.0)
+  rspec
   sinatra (~> 1.4.3)
   sinatra-contrib
