@@ -26,7 +26,7 @@ describe 'Polymer routes', :type => :feature do
       Dir['./libs/polymer/*/paper-*.html'].each do |file|
         route = file[15..file.length]
         name = route.split('/').first
-        it "#{name} should 200" do
+        it "#{name[6..name.length]} should 200" do
           visit "/polymer/#{route}"
           page.status_code.should == 200
         end
@@ -37,7 +37,7 @@ describe 'Polymer routes', :type => :feature do
       Dir['./libs/polymer/*/core-*.html'].each do |file|
         route = file[15..file.length]
         name = route.split('/').first
-        it "#{name} should 200" do
+        it "#{name[5..name.length]} should 200" do
           visit "/polymer/#{route}"
           page.status_code.should == 200
         end
