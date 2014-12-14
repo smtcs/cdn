@@ -23,20 +23,22 @@ describe 'Polymer routes', :type => :feature do
 
   describe 'custom elements', :type => :feature do
     describe 'paper', :type => :feature do
-      Dir['./libs/polymer/**/paper-*.html'].each do |file|
-        name = file[15..file.length]
+      Dir['./libs/polymer/*/paper-*.html'].each do |file|
+        route = file[15..file.length]
+        name = route.split('/').first
         it "#{name} should 200" do
-          visit "/polymer/#{name}"
+          visit "/polymer/#{route}"
           page.status_code.should == 200
         end
       end
     end
 
     describe 'core', :type => :feature do
-      Dir['./libs/polymer/**/core-*.html'].each do |file|
-        name = file[15..file.length]
+      Dir['./libs/polymer/*/core-*.html'].each do |file|
+        route = file[15..file.length]
+        name = route.split('/').first
         it "#{name} should 200" do
-          visit "/polymer/#{name}"
+          visit "/polymer/#{route}"
           page.status_code.should == 200
         end
       end
