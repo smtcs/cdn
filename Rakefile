@@ -1,5 +1,7 @@
 require 'rspec/core/rake_task'
 
+task :default => 'test:pretty'
+
 namespace :test do
   desc "Output pretty colorized tests"
   RSpec::Core::RakeTask.new(:pretty) do |t|
