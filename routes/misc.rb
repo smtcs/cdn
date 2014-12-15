@@ -12,11 +12,6 @@ module CDN
         erb :old
       end
 
-      app.get '/test' do
-        content_type :html
-        IO.popen('rspec -f h')
-      end
-
       # Jquery
       app.get '/jq/:num.js' do
         Analytics.track(
