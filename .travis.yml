@@ -1,6 +1,7 @@
 language: ruby
 rvm:
 - 2.1.4
+script: rake test:pretty
 deploy:
   provider: heroku
   api_key:
