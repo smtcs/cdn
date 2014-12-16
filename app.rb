@@ -5,7 +5,7 @@ require 'segment/analytics'
 # Routes
 require_relative 'routes/misc'
 require_relative 'routes/photoswipe'
-require_relative 'routes/cssframeworks'
+require_relative 'routes/css'
 require_relative 'routes/polymer'
 
 Analytics = Segment::Analytics.new({
@@ -17,11 +17,12 @@ module CDN
   class Main < Sinatra::Base
     register Sinatra::MultiRoute
 
-    # Include route block
+    # Start route block
     include CDN::Misc
     include CDN::PhotoSwipe
     include CDN::CSSFramework
     include CDN::Polymer
+    # End route block
 
     set :static_cache_control, [:public, max_age: 60 * 60 * 24 * 7]
 
