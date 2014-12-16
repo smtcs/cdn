@@ -20,7 +20,7 @@ module CDN
     # Start route block
     include CDN::Misc
     include CDN::PhotoSwipe
-    include CDN::CSSFramework
+    include CDN::CSS
     include CDN::Polymer
     # End route block
 

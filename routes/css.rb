@@ -1,5 +1,5 @@
 module CDN
-  module CSSFramework
+  module CSS
     def self.included(app)
       # Bootstrap (with v2.3.2)
       app.get '/bs/bs.:ext' do
