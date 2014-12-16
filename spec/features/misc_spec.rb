@@ -5,11 +5,13 @@ describe 'Misc routes', :type => :feature do
     it '1 should 200 - /jq/1.js' do
       visit '/jq/1.js'
       page.status_code.should == 200
+      page.should have_content 'jQuery JavaScript Library v1.11.1'
     end
 
     it '2 should 200 - /jq/2.js' do
       visit '/jq/2.js'
       page.status_code.should == 200
+      page.should have_content 'jQuery JavaScript Library v2.1.1'
     end
   end
 
@@ -17,6 +19,7 @@ describe 'Misc routes', :type => :feature do
     it 'css should 200 - /fa/fa.css' do
       visit '/fa/fa.css'
       page.status_code.should == 200
+      page.should have_content 'Font Awesome 4.2.0'
     end
 
     describe 'fonts', :type => :feature do
@@ -46,12 +49,25 @@ describe 'Misc routes', :type => :feature do
     it 'hl.js should 200 - /hl/hl.js' do
       visit '/hl/hl.js'
       page.status_code.should == 200
+      page.should have_content '!function(e)'
+    end
+
+    describe 'themes', :type => :feature do
+      Dir['./libs/hljs/styles/*.css'].each do |file|
+        name = file[19..file.length-5]
+        route = file[19..file.length]
+        it "#{name} should 200 - /hl/#{route}" do
+          visit "/hl/#{route}"
+          page.status_code.should == 200
+        end
+      end
     end
   end
 
   it 'skeleton should 200 - /sk.css' do
     visit '/sk.css'
     page.status_code.should == 200
+    page.should have_content 'Skeleton V2.0'
   end
 
   it 'normalize should 200 - /nl.css' do
