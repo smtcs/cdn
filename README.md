@@ -1,5 +1,5 @@
 # Summit CDN
-[![Build Status](https://img.shields.io/travis/everestps/cdn.svg?style=flat)](https://travis-ci.org/everestps/cdn) [![Code Climate](https://img.shields.io/codeclimate/github/everestps/cdn.svg?style=flat)](https://codeclimate.com/github/everestps/cdn) [![Test Coverage](https://img.shields.io/codeclimate/coverage/github/everestps/cdn.svg?style=flat)](https://codeclimate.com/github/everestps/cdn) [![Dependency Status](https://img.shields.io/gemnasium/everestps/cdn.svg?style=flat)](https://gemnasium.com/everestps/cdn)
+[![Build Status](https://img.shields.io/travis/smtcs/cdn.svg?style=flat)](https://travis-ci.org/smtcs/cdn) [![Code Climate](https://img.shields.io/codeclimate/github/smtcs/cdn.svg?style=flat)](https://codeclimate.com/github/smtcs/cdn) [![Test Coverage](https://img.shields.io/codeclimate/coverage/github/smtcs/cdn.svg?style=flat)](https://codeclimate.com/github/smtcs/cdn) [![Dependency Status](https://img.shields.io/gemnasium/smtcs/cdn.svg?style=flat)](https://gemnasium.com/smtcs/cdn)
 
 Summit Computer Science CDN (Content Delivery Network).
 
