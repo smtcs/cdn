@@ -134,7 +134,7 @@ Polymer is this new thing that allows you to use these things called web compone
 <link rel="import" href="http://cdn.smtcs.rocks/pl/pl.html">
 <script src="http://cdn.smtcs.rocks/pl/wc.js"></script> <!-- Compatability with Older browsers -->
 
-<link rel="import" href="http://cdn.smtcs.rocks/pl/paper-button/paper-button.html">
+<link rel="import" href="http://cdn.smtcs.rocks/polymer/paper-button/paper-button.html">
 <!-- Replace paper-button with any polymer element in the docs, link above-->
 ```
 
