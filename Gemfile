@@ -10,6 +10,7 @@ group :test, :production do
   gem 'passenger', '~> 5.0.0.beta1'
   gem 'rake'
   gem 'rspec'
+  gem 'syntax'
   gem 'capybara', '~> 2.1.0'
   gem 'poltergeist'
 end
