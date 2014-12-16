@@ -11,6 +11,10 @@ notifications:
     skip_join: true
   email: false
 
+addons:
+  code_climate:
+    repo_token: af4490358bda5d52d6ee6f3264916d917001a76f287c38b2db3bb8f6152e2a6b
+
 deploy:
   provider: heroku
   api_key:
