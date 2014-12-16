@@ -7,4 +7,4 @@ deploy:
     secure: BoQ2rDgQVxvgA3PzUVQaZX9W17Rgxmuy5dkiTm+J8hZBAvyj50Zs/4j2Vc2FXc1zrqoWmJ82Am1+/9Agk/y9h0iOa06XxATvIUZZ3mHfH3KBGvG3YnL2v5CaJwyxXwT+kx/wrjomyEO/pDVIHvIMiZonZEZIk6+6BVdF/pTRN5o=
   app: summitcdn
   on:
-    repo: everestps/cdn
+    repo: smtcs/cdn
