@@ -8,6 +8,10 @@ This is a cdn where everyone from the Summit Public Schools Computer Science Exp
 
 This server is powered by [sinatra](http://sinatrarb.com/) with [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) enabled so you can use it for link and script tags
 
+#### Tests
+
+I wrote a lot of tests for this application so I know that everything works as it should, if you would like to see a lot of green and all the tests I wrote go to [this](http://cdn.smtcs.rocks/test) link for the tests
+
 ## List of frameworks
 
 | Framework       | CSS | JS  | HTML |
