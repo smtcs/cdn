@@ -10,7 +10,7 @@ gem "codeclimate-test-reporter", group: :test, require: nil
 group :test, :production do
   gem 'passenger', '~> 5.0.0.beta1'
   gem 'rake'
-  gem 'rspec', '~> 3.0.0'
+  gem 'rspec', '~> 3.1.0'
   gem 'syntax'
   gem 'capybara', '~> 2.4.0'
   gem 'poltergeist'
