@@ -4,7 +4,8 @@ rvm:
 - 2.1.4
 
 notifications:
-  irc: "chat.freenode.net#summitcs"
+  irc:
+    channels: "chat.freenode.net#summitcs"
     template:
       - "%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
     skip_join: true
