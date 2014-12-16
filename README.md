@@ -1,4 +1,4 @@
-# Summit CDN [![Build Status](https://img.shields.io/travis/everestps/cdn.svg?style=flat)](https://travis-ci.org/everestps/cdn)
+# Summit CDN [![Build Status](https://img.shields.io/travis/everestps/cdn.svg?style=flat)](https://travis-ci.org/everestps/cdn) [![Code Climate](https://img.shields.io/codeclimate/github/everestps/cdn.svg?style=flat)](https://codeclimate.com/github/everestps/cdn) [![Test Coverage](https://img.shields.io/codeclimate/coverage/github/everestps/cdn.svg?style=flat))](https://codeclimate.com/github/everestps/cdn)
 
 Summit Computer Science CDN (Content Delivery Network).
 

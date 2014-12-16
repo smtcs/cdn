@@ -1,11 +1,11 @@
 ENV['RACK_ENV'] = 'test'
 require_relative '../app'
 require 'rspec'
-require 'coveralls'
+require 'codeclimate-test-reporter'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
 
-Coveralls.wear!
+CodeClimate::TestReporter.start
 
 Capybara.app = CDN::Main
 Capybara.javascript_driver = :poltergeist
