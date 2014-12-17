@@ -5,6 +5,8 @@ rvm:
 
 cache: bundler
 
+sudo: false
+
 notifications:
   irc:
     channels: "chat.freenode.net#summitcs"
