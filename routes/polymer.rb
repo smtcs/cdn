@@ -14,17 +14,17 @@ module CDN
       end
 
       # Polymer layout (for polymer.html)
-      app.get '/pl/layout.html', '/pl/polymer/layout.html' do
+      app.get '/pl/layout.html', '/pl/polymer/layout.html', '/polymer/polymer/layout.html' do
         serve 'polymer', 'layout.html'
       end
 
       # Polymer js (for polymer.html)
-      app.get '/pl/polymer.js', '/pl/polymer/polymer.js' do
+      app.get '/pl/polymer.js', '/pl/polymer/polymer.js', '/polymer/polymer/polymer.js' do
         serve 'polymer', 'polymer.js'
       end
 
       Dir['./libs/polymer/**/*'].each do |file|
-        app.get file[6..file.length] do
+        app.get file[6..file.length], file[14..file.length] do
           mime = nil
           case file.split('.').last
           when 'js'
