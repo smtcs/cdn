@@ -6,6 +6,16 @@ describe 'Polymer routes', :type => :feature do
     page.status_code.should == 200
   end
 
+  it 'html should 200 - /pl/polymer/polymer.html' do
+    visit '/pl/polymer/polymer.html'
+    page.status_code.should == 200
+  end
+
+  it 'html should 200 - /polymer/polymer/polymer.html' do
+    visit '/polymer/polymer/polymer.html'
+    page.status_code.should == 200
+  end
+
   it 'js should 200 - /pl/polymer.js' do
     visit '/pl/polymer.js'
     page.status_code.should == 200
