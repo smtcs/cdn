@@ -2,7 +2,7 @@ module CDN
   module Polymer
     def self.included(app)
       # Polymer
-      app.get '/pl/pl.html', '/pl/polymer/polymer.html' do
+      app.get '/pl/pl.html', '/pl/polymer/polymer.html', '/polymer/polymer/polymer.html' do
         Analytics.track(user_id: request.ip, event: 'Hit polymer core lib')
         serve 'polymer', 'polymer.html'
       end
