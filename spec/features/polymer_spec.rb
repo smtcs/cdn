@@ -21,6 +21,16 @@ describe 'Polymer routes', :type => :feature do
     page.status_code.should == 200
   end
 
+  it 'js should 200 - /pl/polymer/polymer.js' do
+    visit '/pl/polymer/polymer.js'
+    page.status_code.should == 200
+  end
+
+  it 'js should 200 - /polymer/polymer/polymer.js' do
+    visit '/polymer/polymer/polymer.js'
+    page.status_code.should == 200
+  end
+
   it 'wc should 200 - /pl/wc.js' do
     visit '/pl/wc.js'
     page.status_code.should == 200
@@ -28,6 +38,16 @@ describe 'Polymer routes', :type => :feature do
 
   it 'layout should 200 - /pl/layout.html' do
     visit '/pl/layout.html'
+    page.status_code.should == 200
+  end
+
+  it 'layout should 200 - /pl/polymer/layout.html' do
+    visit '/pl/polymer/layout.html'
+    page.status_code.should == 200
+  end
+
+  it 'layout should 200 - /polymer/polymer/layout.html' do
+    visit '/polymer/polymer/layout.html'
     page.status_code.should == 200
   end
 
