@@ -1,24 +1,21 @@
 language: ruby
-
 rvm:
 - 2.1.4
-
 cache: bundler
-
 sudo: false
-
 notifications:
   irc:
-    channels: "chat.freenode.net#summitcs"
+    channels: chat.freenode.net#summitcs
     template:
-      - "%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
+    - "%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
     skip_join: true
   email: false
-
+  hipchat:
+    rooms:
+      secure: juPDXOTb4i8d/OEKmyPyIQuojn84VHuBlGWIECrPvHJ1+/JNhtwZuxgyCIHgK+0oTGsW5OHgEXCDQwBrzotQnr/xknm098cFwvSX8r19O814nwx/zKYrUgIb7HRslmKphe1g9MZJZhCOjXpw0svJAJJlygoq4Ky/awQ+JJmdZmo=
 addons:
   code_climate:
     repo_token: af4490358bda5d52d6ee6f3264916d917001a76f287c38b2db3bb8f6152e2a6b
-
 deploy:
   provider: heroku
   api_key:
