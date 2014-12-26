@@ -12,7 +12,7 @@ notifications:
   email: false
   hipchat:
     rooms:
-      secure: juPDXOTb4i8d/OEKmyPyIQuojn84VHuBlGWIECrPvHJ1+/JNhtwZuxgyCIHgK+0oTGsW5OHgEXCDQwBrzotQnr/xknm098cFwvSX8r19O814nwx/zKYrUgIb7HRslmKphe1g9MZJZhCOjXpw0svJAJJlygoq4Ky/awQ+JJmdZmo=
+      secure: bedz3d+0QX1/LEEWuprVSF66T99xzR/Ax7gyndveGYsmIeprWnbZ+yq5D8DiFLqE5hvgZ27oyn1jss/hVLxjVcAbW6dWDT+t1E63FdqemvKrHvI48hF02BGEaDU5C9wvt+EkxveEWjXju5BMM860oMhRYgkQfg1m/TfZsgujljc=
 addons:
   code_climate:
     repo_token: af4490358bda5d52d6ee6f3264916d917001a76f287c38b2db3bb8f6152e2a6b
