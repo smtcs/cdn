@@ -1,27 +1,36 @@
 require 'sinatra/base'
 require 'sinatra/multi_route'
 require 'segment/analytics'
+require 'bugsnag'
 
 # Routes
 require_relative 'routes/misc'
 require_relative 'routes/photoswipe'
 require_relative 'routes/css'
 require_relative 'routes/polymer'
+require_relative 'routes/school'
 
 Analytics = Segment::Analytics.new({
   write_key: 'VOkH1POOQZ2csVKeZ2fLKjETIRFHD0Eo',
   on_error: Proc.new { |status, msg| print msg }
 })
 
+Bugsnag.configure do |config|
+    config.api_key = "157fd483182ab0b53375a8ecd39fa4e2"
+end
+
 module CDN
   class Main < Sinatra::Base
     register Sinatra::MultiRoute
+    use Bugsnag::Rack
+    enable :raise_errors
 
     # Start route block
     include CDN::Misc
     include CDN::PhotoSwipe
     include CDN::CSS
     include CDN::Polymer
+    include CDN::School
     # End route block
 
     set :static_cache_control, [:public, max_age: 60 * 60 * 24 * 7]
@@ -62,6 +71,7 @@ module CDN
 
     not_found do
       status 404
+      Bugsnag.notify(RuntimeError.new("404 Route not found"))
     end
   end
 end

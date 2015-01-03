@@ -25,6 +25,7 @@ I wrote a lot of tests for this application so I know that everything works as i
 | Highlight.js    | Yes | Yes | No   |
 | Polymer         | No  | Yes | Yes  |
 | Photoswipe      | No  | Yes | No   |
+| Hashquery       | No  | Yes | No   |
 | Font Awesome    | Yes | No  | No   |
 
 ### Skeleton
@@ -161,7 +162,17 @@ Photoswipe is a javascript library that allows you for a super lightweight light
 
 <script src="http://cdn.smtcs.rocks/ps/ps.js"></script>
 <script src="http://cdn.smtcs.rocks/ps/ps-ui.js"></script>
-  ```
+```
+
+### Hash Query
+
+Hashquery is a library that allows you to store data in the url easily
+
+- [v1.0.0 JS](http://cdn.smtcs.rocks/hq.js)
+
+```html
+<script src="http://cdn.smtcs.rocks/hq.js"></script>
+```
 
 ### Font Awesome
 
