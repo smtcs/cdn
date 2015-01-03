@@ -1,6 +1,6 @@
-/*! PhotoSwipe Default UI - 4.0.0 - 2014-12-08
+/*! PhotoSwipe Default UI - 4.0.3 - 2015-01-03
 * http://photoswipe.com
-* Copyright (c) 2014 Dmitry Semenov; */
+* Copyright (c) 2015 Dmitry Semenov; */
 /**
 *
 * UI on top of main sliding area (caption, arrows, close button, etc.).
@@ -11,7 +11,7 @@
 	if (typeof define === 'function' && define.amd) {
 		define(factory);
 	} else if (typeof exports === 'object') {
-		module.exports = factory;
+		module.exports = factory();
 	} else {
 		root.PhotoSwipeUI_Default = factory();
 	}
@@ -23,6 +23,7 @@
 
 var PhotoSwipeUI_Default =
  function(pswp, framework) {
+
 	var ui = this;
 	var _overlayUIUpdated = false,
 		_controlsVisible = true,
@@ -36,12 +37,16 @@ var PhotoSwipeUI_Default =
 		_shareModalHidden = true,
 		_initalCloseOnScrollValue,
 		_isIdle,
+		_listen,
 
 		_loadingIndicator,
 		_loadingIndicatorHidden,
 		_loadingIndicatorTimeout,
 
-		_options = {
+		_galleryHasOneSlide,
+
+		_options,
+		_defaultUIOptions = {
 			barsSize: {top:44, bottom:'auto'},
 			closeElClasses: ['item', 'caption', 'zoom-wrap', 'ui', 'top-bar'], 
 			timeToIdle: 4000, 
@@ -72,9 +77,20 @@ var PhotoSwipeUI_Default =
 			shareButtons: [
 				{id:'facebook', label:'Share on Facebook', url:'https://www.facebook.com/sharer/sharer.php?u={{url}}'},
 				{id:'twitter', label:'Tweet', url:'https://twitter.com/intent/tweet?text={{text}}&url={{url}}'},
-				{id:'pinterest', label:'Pin it', url:'http://www.pinterest.com/pin/create/button/?url={{url}}&media={{image_url}}&description={{text}}'},
+				{id:'pinterest', label:'Pin it', url:'http://www.pinterest.com/pin/create/button/'+
+													'?url={{url}}&media={{image_url}}&description={{text}}'},
 				{id:'download', label:'Download image', url:'{{raw_image_url}}', download:true}
 			],
+			getImageURLForShare: function( /* shareButtonData */ ) {
+				return pswp.currItem.src || '';
+			},
+			getPageURLForShare: function( /* shareButtonData */ ) {
+				return window.location.href;
+			},
+			getTextForShare: function( /* shareButtonData */ ) {
+				return pswp.currItem.title || '';
+			},
+				
 			indexIndicatorSep: ' / '
 
 		},
@@ -83,10 +99,7 @@ var PhotoSwipeUI_Default =
 
 
 
-
 	var _onControlsTap = function(e) {
-
-
 			if(_blockControlsTap) {
 				return true;
 			}
@@ -114,14 +127,39 @@ var PhotoSwipeUI_Default =
 					e.stopPropagation();
 				}
 				_blockControlsTap = true;
+
+				// Some versions of Android don't prevent ghost click event 
+				// when preventDefault() was called on touchstart and/or touchend.
+				// 
+				// This happens on v4.3, 4.2, 4.1, 
+				// older versions strangely work correctly, 
+				// but just in case we add delay on all of them)	
+				var tapDelay = framework.features.isOldAndroid ? 600 : 30;
 				_blockControlsTapTimeout = setTimeout(function() {
 					_blockControlsTap = false;
-				}, 30 );
+				}, tapDelay);
 			}
 
 		},
 		_fitControlsInViewport = function() {
-			return !pswp.likelyTouchDevice || pswp.options.mouseUsed || screen.width > 1200;
+			return !pswp.likelyTouchDevice || _options.mouseUsed || screen.width > 1200;
+		},
+		_togglePswpClass = function(el, cName, add) {
+			framework[ (add ? 'add' : 'remove') + 'Class' ](el, 'pswp__' + cName);
+		},
+
+		// add class when there is just one item in the gallery
+		// (by default it hides left/right arrows and 1ofX counter)
+		_countNumItems = function() {
+			var hasOneSlide = (_options.getNumItemsFn() === 1);
+
+			if(hasOneSlide !== _galleryHasOneSlide) {
+				_togglePswpClass(_controls, 'ui--one-slide', hasOneSlide);
+				_galleryHasOneSlide = hasOneSlide;
+			}
+		},
+		_toggleShareModalClass = function() {
+			_togglePswpClass(_shareModal, 'share-modal--hidden', _shareModalHidden);
 		},
 		_toggleShareModal = function() {
 
@@ -129,7 +167,7 @@ var PhotoSwipeUI_Default =
 			
 			
 			if(!_shareModalHidden) {
-				framework[ (_shareModalHidden ? 'add' : 'remove') + 'Class'](_shareModal, 'pswp__share-modal--hidden');
+				_toggleShareModalClass();
 				setTimeout(function() {
 					if(!_shareModalHidden) {
 						framework.addClass(_shareModal, 'pswp__share-modal--fade-in');
@@ -139,7 +177,7 @@ var PhotoSwipeUI_Default =
 				framework.removeClass(_shareModal, 'pswp__share-modal--fade-in');
 				setTimeout(function() {
 					if(_shareModalHidden) {
-						framework[ (_shareModalHidden ? 'add' : 'remove') + 'Class'](_shareModal, 'pswp__share-modal--hidden');
+						_toggleShareModalClass();
 					}
 				}, 300);
 			}
@@ -149,9 +187,12 @@ var PhotoSwipeUI_Default =
 			}
 			return false;
 		},
+
 		_openWindowPopup = function(e) {
 			e = e || window.event;
 			var target = e.target || e.srcElement;
+
+			pswp.shout('shareLinkClick', e, target);
 
 			if(!target.href) {
 				return false;
@@ -161,42 +202,52 @@ var PhotoSwipeUI_Default =
 				return true;
 			}
 
-			//if( !pswp.options.mouseUsed ) {
-			//	target.setAttribute('target', '_self');
-			//	return true;
-			//}
+			window.open(target.href, 'pswp_share', 'scrollbars=yes,resizable=yes,toolbar=no,'+
+										'location=yes,width=550,height=420,top=100,left=' + 
+										(window.screen ? Math.round(screen.width / 2 - 275) : 100)  );
 
-			window.open(target.href, "pswp_share", "scrollbars=yes,resizable=yes,toolbar=no,location=yes,width=550,height=420,top=100,left=" + (window.screen ? Math.round(screen.width / 2 - 275) : 100)  );
 			if(!_shareModalHidden) {
 				_toggleShareModal();
 			}
-
-			
 			
 			return false;
 		},
 		_updateShareURLs = function() {
 			var shareButtonOut = '',
 				shareButtonData,
-				shareURL;
+				shareURL,
+				image_url,
+				page_url,
+				share_text;
 
-			for(var i = 0; i < pswp.options.shareButtons.length; i++) {
-				shareButtonData = pswp.options.shareButtons[i];
+			for(var i = 0; i < _options.shareButtons.length; i++) {
+				shareButtonData = _options.shareButtons[i];
 
-				shareURL = shareButtonData.url.replace('{{url}}', encodeURIComponent(window.location.href) )
-									.replace('{{image_url}}', encodeURIComponent(pswp.currItem.src || '') )
-									.replace('{{raw_image_url}}', pswp.currItem.src || '' )
-									.replace('{{text}}', encodeURIComponent(pswp.currItem.title || '') );
+				image_url = _options.getImageURLForShare(shareButtonData);
+				page_url = _options.getPageURLForShare(shareButtonData);
+				share_text = _options.getTextForShare(shareButtonData);
 
-				shareButtonOut += '<a href="' + shareURL + '" target="_blank" class="pswp__share--' + shareButtonData.id + '"' + (shareButtonData.download ? 'download' : '') + '>' + shareButtonData.label + '</a>';
+				shareURL = shareButtonData.url.replace('{{url}}', encodeURIComponent(page_url) )
+									.replace('{{image_url}}', encodeURIComponent(image_url) )
+									.replace('{{raw_image_url}}', image_url )
+									.replace('{{text}}', encodeURIComponent(share_text) );
+
+				shareButtonOut += '<a href="' + shareURL + '" target="_blank" '+
+									'class="pswp__share--' + shareButtonData.id + '"' +
+									(shareButtonData.download ? 'download' : '') + '>' + 
+									shareButtonData.label + '</a>';
+
+				if(_options.parseShareButtonOut) {
+					shareButtonOut = _options.parseShareButtonOut(shareButtonData, shareButtonOut);
+				}
 			}
 			_shareModal.children[0].innerHTML = shareButtonOut;
 			_shareModal.children[0].onclick = _openWindowPopup;
 
 		},
 		_hasCloseClass = function(target) {
-			for(var  i = 0; i < pswp.options.closeElClasses.length; i++) {
-				if( framework.hasClass(target, 'pswp__' + pswp.options.closeElClasses[i]) ) {
+			for(var  i = 0; i < _options.closeElClasses.length; i++) {
+				if( framework.hasClass(target, 'pswp__' + _options.closeElClasses[i]) ) {
 					return true;
 				}
 			}
@@ -214,19 +265,146 @@ var PhotoSwipeUI_Default =
 		_onMouseLeaveWindow = function(e) {
 			e = e ? e : window.event;
 			var from = e.relatedTarget || e.toElement;
-			if (!from || from.nodeName === "HTML") {
+			if (!from || from.nodeName === 'HTML') {
 				clearTimeout(_idleTimer);
 				_idleTimer = setTimeout(function() {
 					ui.setIdle(true);
-				}, pswp.options.timeToIdleOutside);
+				}, _options.timeToIdleOutside);
+			}
+		},
+		_setupFullscreenAPI = function() {
+			if(_options.fullscreenEl) {
+				if(!_fullscrenAPI) {
+					_fullscrenAPI = ui.getFullscreenAPI();
+				}
+				if(_fullscrenAPI) {
+					framework.bind(document, _fullscrenAPI.eventK, ui.updateFullscreen);
+					ui.updateFullscreen();
+					framework.addClass(pswp.template, 'pswp--supports-fs');
+				} else {
+					framework.removeClass(pswp.template, 'pswp--supports-fs');
+				}
+			}
+		},
+		_setupLoadingIndicator = function() {
+			// Setup loading indicator
+			if(_options.preloaderEl) {
+			
+				_toggleLoadingIndicator(true);
+
+				_listen('beforeChange', function() {
+
+					clearTimeout(_loadingIndicatorTimeout);
+
+					// display loading indicator with delay
+					_loadingIndicatorTimeout = setTimeout(function() {
+
+						if(pswp.currItem && pswp.currItem.loading) {
+
+							if( !pswp.allowProgressiveImg() || (pswp.currItem.img && !pswp.currItem.img.naturalWidth)  ) {
+								// show preloader if progressive loading is not enabled, 
+								// or image width is not defined yet (because of slow connection)
+								_toggleLoadingIndicator(false); 
+								// items-controller.js function allowProgressiveImg
+							}
+							
+						} else {
+							_toggleLoadingIndicator(true); // hide preloader
+						}
+
+					}, _options.loadingIndicatorDelay);
+					
+				});
+				_listen('imageLoadComplete', function(index, item) {
+					if(pswp.currItem === item) {
+						_toggleLoadingIndicator(true);
+					}
+				});
+
 			}
 		},
 		_toggleLoadingIndicator = function(hide) {
-
-			if( /*pswp.likelyTouchDevice*/ _loadingIndicatorHidden !== hide ) {
-				framework[ (hide ? 'remove' : 'add') + 'Class' ](_loadingIndicator, 'pswp__preloader--active');
+			if( _loadingIndicatorHidden !== hide ) {
+				_togglePswpClass(_loadingIndicator, 'preloader--active', !hide);
 				_loadingIndicatorHidden = hide;
 			}
+		},
+		_applyNavBarGaps = function(item) {
+			var gap = item.vGap;
+
+			if( _fitControlsInViewport() ) {
+				
+				var bars = _options.barsSize; 
+				if(_options.captionEl && bars.bottom === 'auto') {
+					if(!_fakeCaptionContainer) {
+						_fakeCaptionContainer = framework.createEl('pswp__caption pswp__caption--fake');
+						_fakeCaptionContainer.appendChild( framework.createEl('pswp__caption__center') );
+						_controls.insertBefore(_fakeCaptionContainer, _captionContainer);
+						framework.addClass(_controls, 'pswp__ui--fit');
+					}
+					if( _options.addCaptionHTMLFn(item, _fakeCaptionContainer, true) ) {
+
+						var captionSize = _fakeCaptionContainer.clientHeight;
+						gap.bottom = parseInt(captionSize,10) || 44;
+					} else {
+						gap.bottom = bars.top; // if no caption, set size of bottom gap to size of top
+					}
+				} else {
+					gap.bottom = bars.bottom;
+				}
+				
+				// height of top bar is static, no need to calculate it
+				gap.top = bars.top;
+			} else {
+				gap.top = gap.bottom = 0;
+			}
+		},
+		_setupIdle = function() {
+			// Hide controls when mouse is used
+			if(_options.timeToIdle) {
+				_listen('mouseUsed', function() {
+					
+					framework.bind(document, 'mousemove', _onIdleMouseMove);
+					framework.bind(document, 'mouseout', _onMouseLeaveWindow);
+
+					_idleInterval = setInterval(function() {
+						_idleIncrement++;
+						if(_idleIncrement === 2) {
+							ui.setIdle(true);
+						}
+					}, _options.timeToIdle / 2);
+				});
+			}
+		},
+		_setupHidingControlsDuringGestures = function() {
+
+			// Hide controls on vertical drag
+			_listen('onVerticalDrag', function(now) {
+				if(_controlsVisible && now < 0.95) {
+					ui.hideControls();
+				} else if(!_controlsVisible && now >= 0.95) {
+					ui.showControls();
+				}
+			});
+
+			// Hide controls when pinching to close
+			var pinchControlsHidden;
+			_listen('onPinchClose' , function(now) {
+				if(_controlsVisible && now < 0.9) {
+					ui.hideControls();
+					pinchControlsHidden = true;
+				} else if(pinchControlsHidden && !_controlsVisible && now > 0.9) {
+					ui.showControls();
+				}
+			});
+
+			_listen('zoomGestureEnded', function() {
+				pinchControlsHidden = false;
+				if(pinchControlsHidden && !_controlsVisible) {
+					ui.showControls();
+				}
+			});
+
 		};
 
 
@@ -307,52 +485,72 @@ var PhotoSwipeUI_Default =
 
 	];
 
+	var _setupUIElements = function() {
+		var item,
+			classAttr,
+			uiElement;
+
+		var loopThroughChildElements = function(sChildren) {
+			if(!sChildren) {
+				return;
+			}
+
+			var l = sChildren.length;
+			for(var i = 0; i < l; i++) {
+				item = sChildren[i];
+				classAttr = item.className;
+
+				for(var a = 0; a < _uiElements.length; a++) {
+					uiElement = _uiElements[a];
+
+					if(classAttr.indexOf('pswp__' + uiElement.name) > -1  ) {
+
+						if( _options[uiElement.option] ) { // if element is not disabled from options
+							
+							framework.removeClass(item, 'pswp__element--disabled');
+							if(uiElement.onInit) {
+								uiElement.onInit(item);
+							}
+							
+							//item.style.display = 'block';
+						} else {
+							framework.addClass(item, 'pswp__element--disabled');
+							//item.style.display = 'none';
+						}
+					}
+				}
+			}
+		};
+		loopThroughChildElements(_controls.children);
+
+		var topBar =  framework.getChildByClass(_controls, 'pswp__top-bar');
+		if(topBar) {
+			loopThroughChildElements( topBar.children );
+		}
+	};
 
 
 	
 
 	ui.init = function() {
 
-		// extend objects
-		framework.extend(pswp.options, _options, true);
+		// extend options
+		framework.extend(pswp.options, _defaultUIOptions, true);
+
+		// create local link for fast access
+		_options = pswp.options;
 
 		// find pswp__ui element
-		_controls = pswp.scrollWrap.children[1];
+		_controls = framework.getChildByClass(pswp.scrollWrap, 'pswp__ui');
 
-		var _listen = pswp.listen;
+		// create local link
+		_listen = pswp.listen;
 
-		
-		// Hide controls on vertical drag
-		_listen('onVerticalDrag', function(now) {
-			if(_controlsVisible && now < 0.95) {
-				ui.hideControls();
-			} else if(!_controlsVisible && now >= 0.95) {
-				ui.showControls();
-			}
-		});
 
-		// Hide controls when pinching to close
-		var pinchControlsHidden;
-		_listen('onPinchClose' , function(now) {
-			if(_controlsVisible && now < 0.9) {
-				ui.hideControls();
-				pinchControlsHidden = true;
-			} else if(pinchControlsHidden && !_controlsVisible && now > 0.9) {
-				ui.showControls();
-			}
-		});
-		_listen('zoomGestureEnded', function() {
-			pinchControlsHidden = false;
-			if(pinchControlsHidden && !_controlsVisible) {
-				ui.showControls();
-			}
-			
-		});
-
+		_setupHidingControlsDuringGestures();
 
 		// update controls when slides change
 		_listen('beforeChange', ui.update);
-
 
 		// toggle zoom on double-tap
 		_listen('doubleTap', function(point) {
@@ -360,38 +558,21 @@ var PhotoSwipeUI_Default =
 			if(pswp.getZoomLevel() !== initialZoomLevel) {
 				pswp.zoomTo(initialZoomLevel, point, 333);
 			} else {
-				pswp.zoomTo(pswp.currItem.doubleTapZoom, point, 333);
+				pswp.zoomTo(_options.getDoubleTapZoom(false, pswp.currItem), point, 333);
 			}
-
 		});
-
-		
-		
-
-		// Hide controls when mouse is used
-		if(pswp.options.timeToIdle) {
-			_listen('mouseUsed', function() {
-				
-				framework.bind(document, 'mousemove', _onIdleMouseMove);
-				framework.bind(document, 'mouseout', _onMouseLeaveWindow);
-
-				_idleInterval = setInterval(function() {
-					_idleIncrement++;
-					if(_idleIncrement === 2) {
-						ui.setIdle(true);
-					}
-				}, pswp.options.timeToIdle / 2);
-			});
-		}
 
 		// Allow text selection in caption
 		_listen('preventDragEvent', function(e, isDown, preventObj) {
 			var t = e.target || e.srcElement;
-			if(t && t.className && e.type.indexOf('mouse') > -1 && ( t.className.indexOf('__caption') > 0 || (/(SMALL|STRONG|EM)/i).test(t.tagName) ) ) {
+			if(
+				t && 
+				t.className && e.type.indexOf('mouse') > -1 && 
+				( t.className.indexOf('__caption') > 0 || (/(SMALL|STRONG|EM)/i).test(t.tagName) ) 
+			) {
 				preventObj.prevent = false;
 			}
 		});
-
 
 		// bind events for UI
 		_listen('bindEvents', function() {
@@ -431,8 +612,7 @@ var PhotoSwipeUI_Default =
 
 		// clean up things when gallery is destroyed
 		_listen('destroy', function() {
-
-			if(pswp.options.captionEl) {
+			if(_options.captionEl) {
 				if(_fakeCaptionContainer) {
 					_controls.removeChild(_fakeCaptionContainer);
 				}
@@ -445,15 +625,14 @@ var PhotoSwipeUI_Default =
 			framework.removeClass(_controls, 'pswp__ui--over-close');
 			framework.addClass( _controls, 'pswp__ui--hidden');
 			ui.setIdle(false);
-
 		});
 		
 
-		if(!pswp.options.showAnimationDuration) {
+		if(!_options.showAnimationDuration) {
 			framework.removeClass( _controls, 'pswp__ui--hidden');
 		}
 		_listen('initialZoomIn', function() {
-			if(pswp.options.showAnimationDuration) {
+			if(_options.showAnimationDuration) {
 				framework.removeClass( _controls, 'pswp__ui--hidden');
 			}
 		});
@@ -461,143 +640,26 @@ var PhotoSwipeUI_Default =
 			framework.addClass( _controls, 'pswp__ui--hidden');
 		});
 
+		_listen('parseVerticalMargin', _applyNavBarGaps);
 		
+		_setupUIElements();
 
-		_listen('parseVerticalMargin', function(item) {
-			var gap = item.vGap;
-
-
-			if( _fitControlsInViewport() /* !pswp.likelyTouchDevice || pswp.options.mouseUsed || screen.width > 1200 */ /* pswp.viewportSize.y > 800 */) {
-				
-				var bars = pswp.options.barsSize; 
-				if(pswp.options.captionEl && bars.bottom === 'auto') {
-					if(!_fakeCaptionContainer) {
-						_fakeCaptionContainer = framework.createEl('pswp__caption pswp__caption--fake');
-						_fakeCaptionContainer.appendChild( framework.createEl('pswp__caption__center') );
-						_controls.insertBefore(_fakeCaptionContainer, _captionContainer);
-						framework.addClass(_controls, 'pswp__ui--fit');
-					}
-					if( pswp.options.addCaptionHTMLFn(item, _fakeCaptionContainer, true) ) {
-
-						var captionSize = _fakeCaptionContainer.clientHeight;
-						gap.bottom = parseInt(captionSize,10) || 44;
-					} else {
-						gap.bottom = bars.top; // if no caption, set size of bottom gap to size of top
-					}
-				} else {
-					gap.bottom = bars.bottom;
-				}
-				
-				// height of top bar is static, no need to calculate it
-				gap.top = bars.top;
-			} else {
-				gap.top = gap.bottom = 0;
-			}
-		});
-
-
-
-		var item,
-			classAttr,
-			uiElement;
-
-
-		var loopThroughChildElements = function(sChildren) {
-			var l = sChildren.length;
-			for(var i = 0; i < l; i++) {
-				item = sChildren[i];
-				classAttr = item.className;
-
-				for(var a = 0; a < _uiElements.length; a++) {
-					uiElement = _uiElements[a];
-
-					
-						if(classAttr.indexOf('pswp__' + uiElement.name) > -1  ) {
-
-							if( pswp.options[uiElement.option] ) { // if element is not disabled from options
-								
-								framework.removeClass(item, 'pswp__element--disabled');
-								if(uiElement.onInit) {
-									uiElement.onInit(item);
-								}
-								
-								//item.style.display = 'block';
-							} else {
-								framework.addClass(item, 'pswp__element--disabled');
-								//item.style.display = 'none';
-							}
-
-							
-
-						}
-				}
-			}
-		};
-		loopThroughChildElements(_controls.children);
-		loopThroughChildElements(_controls.children[0].children);
-		
-
-		if(pswp.options.shareEl && _shareButton && _shareModal) {
+		if(_options.shareEl && _shareButton && _shareModal) {
 			_shareModalHidden = true;
 		}
 
+		_countNumItems();
 
-		if(pswp.options.fullscreenEl) {
-			if(!_fullscrenAPI) {
-				_fullscrenAPI = ui.getFullscreenAPI();
-			}
-			if(_fullscrenAPI) {
-				framework.bind(document, _fullscrenAPI.eventK, ui.updateFullscreen);
-				ui.updateFullscreen();
-				framework.addClass(pswp.template, 'pswp--supports-fs');
-			} else {
-				framework.removeClass(pswp.template, 'pswp--supports-fs');
-			}
-		}
+		_setupIdle();
 
+		_setupFullscreenAPI();
 
-		// Setup loading indicator
-		if(pswp.options.preloaderEl) {
-		
-			_toggleLoadingIndicator(true);
-
-			_listen('beforeChange', function() {
-
-				clearTimeout(_loadingIndicatorTimeout);
-
-				// display loading indicator with delay
-				_loadingIndicatorTimeout = setTimeout(function() {
-
-					if(pswp.currItem && pswp.currItem.loading) {
-
-						if( !pswp.allowProgressiveImg() || (pswp.currItem.img && !pswp.currItem.img.naturalWidth)  ) {
-							_toggleLoadingIndicator(false); // show preloader if progressive loading is not enabled, or image width is not defined yet (because of slow connection)
-							// items-controller.js function allowProgressiveImg
-						}
-						
-					} else {
-						_toggleLoadingIndicator(true); // hide preloader
-					}
-
-				}, pswp.options.loadingIndicatorDelay);
-				
-			});
-			_listen('imageLoadComplete', function(index, item) {
-				if(pswp.currItem === item) {
-					_toggleLoadingIndicator(true);
-				}
-			});
-
-		}
-
-
-
-
+		_setupLoadingIndicator();
 	};
 
 	ui.setIdle = function(isIdle) {
 		_isIdle = isIdle;
-		framework[ (isIdle ? 'add' : 'remove') + 'Class' ](_controls, 'pswp__ui--idle');
+		_togglePswpClass(_controls, 'ui--idle', isIdle);
 	};
 
 	ui.update = function() {
@@ -606,14 +668,10 @@ var PhotoSwipeUI_Default =
 			
 			ui.updateIndexIndicator();
 
-			if(pswp.options.captionEl) {
-				pswp.options.addCaptionHTMLFn(pswp.currItem, _captionContainer);
+			if(_options.captionEl) {
+				_options.addCaptionHTMLFn(pswp.currItem, _captionContainer);
 
-				if(!pswp.currItem.title) {
-					framework.addClass(_captionContainer, 'pswp__caption--empty');
-				} else {
-					framework.removeClass(_captionContainer, 'pswp__caption--empty');
-				}
+				_togglePswpClass(_captionContainer, 'caption--empty', !pswp.currItem.title);
 			}
 
 			_overlayUIUpdated = true;
@@ -621,27 +679,29 @@ var PhotoSwipeUI_Default =
 		} else {
 			_overlayUIUpdated = false;
 		}
+
+		_countNumItems();
 	};
+
 	ui.updateFullscreen = function() {
-		framework[ (_fullscrenAPI.isFullscreen() ? 'add' : 'remove') + 'Class' ](pswp.template, 'pswp--fs');
+		_togglePswpClass(pswp.template, 'fs', _fullscrenAPI.isFullscreen());
 	};
+
 	ui.updateIndexIndicator = function() {
-		if(pswp.options.counterEl) {
-			// +1, because human-friendly index starts from one.
-			_indexIndicator.innerHTML = (pswp.getCurrentIndex()+1) + pswp.options.indexIndicatorSep + pswp.options.getNumItemsFn();
+		if(_options.counterEl) {
+			_indexIndicator.innerHTML = (pswp.getCurrentIndex()+1) + 
+										_options.indexIndicatorSep + 
+										_options.getNumItemsFn();
 		}
-		
 	};
 	
 	ui.onGlobalTap = function(e) {
 		e = e || window.event;
 		var target = e.target || e.srcElement;
 
-
 		if(_blockControlsTap) {
 			return;
 		}
-
 
 		if(e.detail && e.detail.pointerType === 'mouse') {
 
@@ -661,7 +721,7 @@ var PhotoSwipeUI_Default =
 		} else {
 
 			// tap anywhere (except buttons) to toggle visibility of controls
-			if(pswp.options.tapToToggleControls) {
+			if(_options.tapToToggleControls) {
 				if(_controlsVisible) {
 					ui.hideControls();
 				} else {
@@ -670,26 +730,19 @@ var PhotoSwipeUI_Default =
 			}
 
 			// tap to close gallery
-			if(pswp.options.tapToClose && (framework.hasClass(target, 'pswp__img') || _hasCloseClass(target)) ) {
+			if(_options.tapToClose && (framework.hasClass(target, 'pswp__img') || _hasCloseClass(target)) ) {
 				pswp.close();
 				return;
 			}
 			
 		}
-
-
 	};
 	ui.onMouseOver = function(e) {
 		e = e || window.event;
 		var target = e.target || e.srcElement;
 
-		// apply class when mouse is over an element that should close the gallery
-		if(_hasCloseClass(target)) {
-			framework.addClass(_controls, 'pswp__ui--over-close');
-		} else {
-			framework.removeClass(_controls, 'pswp__ui--over-close');
-		}
-
+		// add class when mouse is over an element that should close the gallery
+		_togglePswpClass(_controls, 'ui--over-close', _hasCloseClass(target));
 	};
 
 	ui.hideControls = function() {
@@ -753,8 +806,8 @@ var PhotoSwipeUI_Default =
 		if(api) {
 			api.enter = function() { 
 				// disable close-on-scroll in fullscreen
-				_initalCloseOnScrollValue = pswp.options.closeOnScroll; 
-				pswp.options.closeOnScroll = false; 
+				_initalCloseOnScrollValue = _options.closeOnScroll; 
+				_options.closeOnScroll = false; 
 
 				if(this.enterK === 'webkitRequestFullscreen') {
 					pswp.template[this.enterK]( Element.ALLOW_KEYBOARD_INPUT );
@@ -763,7 +816,7 @@ var PhotoSwipeUI_Default =
 				}
 			};
 			api.exit = function() { 
-				pswp.options.closeOnScroll = _initalCloseOnScrollValue;
+				_options.closeOnScroll = _initalCloseOnScrollValue;
 
 				return document[this.exitK](); 
 

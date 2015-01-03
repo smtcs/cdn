@@ -5,13 +5,13 @@ describe 'Misc routes', :type => :feature do
     it '1 should 200 - /jq/1.js' do
       visit '/jq/1.js'
       page.status_code.should == 200
-      page.should have_content 'jQuery JavaScript Library v1.11.1'
+      page.should have_content 'jQuery JavaScript Library v1.11.2'
     end
 
     it '2 should 200 - /jq/2.js' do
       visit '/jq/2.js'
       page.status_code.should == 200
-      page.should have_content 'jQuery JavaScript Library v2.1.1'
+      page.should have_content 'jQuery JavaScript Library v2.1.3'
     end
   end
 

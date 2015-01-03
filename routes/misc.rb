@@ -46,8 +46,7 @@ module CDN
           user_id: request.ip,
           event: "Hit fontwesome font",
           properties: {
-            ext: params[:ext],
-            verison: params[:num]
+            ext: params[:ext]
         })
         serve 'fontawesome/fonts', "fontawesome-webfont.#{params[:ext]}"
       end
