@@ -16,7 +16,8 @@ Analytics = Segment::Analytics.new({
 })
 
 Bugsnag.configure do |config|
-    config.api_key = "157fd483182ab0b53375a8ecd39fa4e2"
+  config.api_key = "157fd483182ab0b53375a8ecd39fa4e2"
+  config.project_root = `pwd`
 end
 
 module CDN
