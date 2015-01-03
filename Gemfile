@@ -14,5 +14,5 @@ group :test, :production do
   gem 'syntax'
   gem 'capybara', '~> 2.4.0'
   gem 'poltergeist'
-  gem 'codeclimate-test-reporter', require: nil
+  gem 'codeclimate-test-reporter', '~> 0.4.4', require: nil
 end
