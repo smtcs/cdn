@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require 'spec_helper'
 
 describe 'Misc routes', :type => :feature do
   describe 'jquery', :type => :feature do

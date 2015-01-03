@@ -30,7 +30,7 @@ namespace :libs do
     task :bs do
       download 'bootstrap/3.3.1/bootstrap.css', 'twbs/bootstrap/master/dist/css/bootstrap.css'
       download 'bootstrap/3.3.1/bootstrap-theme.css', 'twbs/bootstrap/master/dist/css/bootstrap-theme.css'
-      download 'bootstrap/3.3.1/bootstrap.js', 'twbs/bootstrap/master/dist/css/bootstrap.js'
+      download 'bootstrap/3.3.1/bootstrap.js', 'twbs/bootstrap/master/dist/js/bootstrap.js'
     end
   end
 
