@@ -8,7 +8,7 @@ gem 'analytics-ruby', '~> 2.0.0', :require => 'segment/analytics'
 gem 'bugsnag', '~> 2.7.1'
 
 group :test, :production do
-  gem 'passenger', '~> 5.0.0.beta2'
+  gem 'passenger', '~> 5.0.0.beta1'
   gem 'rake'
   gem 'rspec', '~> 3.1.0'
   gem 'syntax'

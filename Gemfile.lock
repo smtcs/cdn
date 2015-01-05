@@ -81,7 +81,7 @@ DEPENDENCIES
   bugsnag (~> 2.7.1)
   capybara (~> 2.4.0)
   codeclimate-test-reporter (~> 0.4.4)
-  passenger (~> 5.0.0.beta2)
+  passenger (~> 5.0.0.beta1)
   poltergeist
   rake
   rspec (~> 3.1.0)
