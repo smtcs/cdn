@@ -3,12 +3,7 @@ module CDN
     def self.included(app)
       # PhotoSwipe
       app.get '/ps/ps.:ext' do
-        Analytics.track(
-          user_id: request.ip,
-          event: "Hit photoswipe #{params[:ext]}",
-          properties: {
-            ext: params[:ext]
-        })
+        exttrack(request.ip, "Hit photoswipe #{params[:ext]}", params[:ext])
         serve 'photoswipe', "photoswipe.#{params[:ext]}"
       end
 
@@ -20,12 +15,7 @@ module CDN
 
       # Photoswipe Skin
       app.get '/ps/skin/skin.:ext' do
-        Analytics.track(
-          user_id: request.ip,
-          event: "Hit photoswipe skin #{params[:ext]}",
-          properties: {
-            ext: params[:ext]
-        })
+        exttrack(request.ip, "Hit photoswipe skin #{params[:ext]}", params[:ext])
         serve 'photoswipe/skin', "default-skin.#{params[:ext]}"
       end
 

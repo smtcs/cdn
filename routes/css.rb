@@ -30,12 +30,7 @@ module CDN
 
       # Material Design
       app.get '/md/md.:ext' do
-        Analytics.track(
-          user_id: request.ip,
-          event: "Hit materialize #{params[:ext]}",
-          properties: {
-            ext: params[:ext]
-        })
+        exttrack(request.ip, "Hit materialize #{params[:ext]}", params[:ext])
         serve 'materialize', "materialize.#{params[:ext]}"
       end
 

@@ -65,6 +65,15 @@ module CDN
 
         headers 'Content-Type' => mime
       end
+
+      def exttrack(ip, event, ext)
+        Analytics.track(
+          user_id: ip,
+          event: event,
+          properties: {
+            ext: ext
+        })
+      end
     end
 
     before do
