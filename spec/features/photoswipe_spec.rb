@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require 'spec_helper'
 
 describe 'Photoswipe routes', :type => :feature do
   it 'css should 200 - /ps/ps.css' do

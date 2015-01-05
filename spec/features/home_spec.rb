@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require 'spec_helper'
 
 describe 'Home', :type => :feature do
   it 'new should 200 - /' do

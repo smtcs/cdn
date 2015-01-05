@@ -40,6 +40,11 @@ module CDN
       # Serve function
       # defines mime type and outputs file
       def serve(abbr, filename)
+        mimetype filename
+        File.read(File.join('libs', abbr.to_s, filename.to_s))
+      end
+
+      def mimetype(filename)
         mime = nil
         case filename.split('.').last
         when 'js'
@@ -59,7 +64,6 @@ module CDN
         end
 
         headers 'Content-Type' => mime
-        File.read(File.join('libs', abbr.to_s, filename.to_s))
       end
     end
 

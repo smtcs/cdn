@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require 'spec_helper'
 
 describe 'Polymer routes', :type => :feature do
   it 'html should 200 - /pl/pl.html' do

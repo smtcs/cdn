@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require 'spec_helper'
 
 describe 'CSS Framework routes', :type => :feature do
   describe 'bootstrap', :type => :feature do

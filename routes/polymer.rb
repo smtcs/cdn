@@ -25,25 +25,7 @@ module CDN
 
       Dir['./libs/polymer/**/*'].each do |file|
         app.get file[6..file.length], file[14..file.length] do
-          mime = nil
-          case file.split('.').last
-          when 'js'
-            mime = 'application/ecmascript'
-          when 'css'
-            mime = 'text/css'
-          when 'svg'
-            mime = 'image/svg+xml'
-          when 'eot'
-            mime = 'application/vnd.ms-fontobject'
-          when 'ttf'
-            mime = 'application/octet-stream'
-          when 'woff'
-            mime = 'application/x-woff'
-          when 'gif'
-            mime = 'image/gif'
-          end
-
-          headers 'Content-Type' => mime
+          mimetype file
           File.read(File.join(file[2..file.length]))
         end
       end
