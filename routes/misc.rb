@@ -12,6 +12,11 @@ module CDN
         erb :old
       end
 
+      app.get '/flat' do
+        Analytics.track(user_id: request.ip, event: 'Hit flatdoc')
+        erb :flat
+      end
+
       app.get '/test' do
         content_type :html
         IO.popen('bin/rspec -f h')
