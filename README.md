@@ -168,7 +168,7 @@ Photoswipe is a javascript library that allows you for a super lightweight light
 
 Hashquery is a library that allows you to store data in the url easily
 
-- [v1.0.0 JS](http://cdn.smtcs.rocks/hq.js)
+- [v1.0.0 JS](http://cdn.smtcs.rocks/cs/hq.js)
 
 ```html
 <script src="http://cdn.smtcs.rocks/hq.js"></script>
