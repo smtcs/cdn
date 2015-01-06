@@ -36,7 +36,7 @@ Skeleton is a great css framework if you are just starting to use css fameworks.
 
 - [v2.0 CSS](http://cdn.smtcs.rocks/sk.css) 11.0 KB
 
-```html
+``` html
 <link rel="stylesheet" href="http://cdn.smtcs.rocks/sk.css">
 ```
 
@@ -55,7 +55,7 @@ Bootstrap is a frontend framework that is very popular for things like its [grid
 - [v2.3.2 CSS](http://cdn.smtcs.rocks/bs/bs.css?v=2.3) 125 KB
 - [v2.3.2 JS](http://cdn.smtcs.rocks/bs/bs.js?v=2.3) 60.8 KB
 
-```html
+``` html
 <link rel="stylesheet" href="http://cdn.smtcs.rocks/bs/bs.css"> <!-- For v3.3.1 -->
 <link rel="stylesheet" href="http://cdn.smtcs.rocks/bs/theme.css"> <!-- For v3.3.1 -->
 <script src="http://cdn.smtcs.rocks/bs/bs.js"></script> <!-- For v3.3.1 -->
@@ -75,7 +75,7 @@ Materialize is a front end framework just like Bootstrap that follows the google
 - [v0.91 CSS](http://cdn.smtcs.rocks/md/md.css) 146 KB
 - [v0.91 JS](http://cdn.smtcs.rocks/md/md.js) 240 KB
 
-```html
+``` html
 <link rel="stylesheet" href="http://cdn.smtcs.rocks/md/md.css">
 <script src="http://cdn.smtcs.rocks/md/md.js"></script>
 ```
@@ -88,7 +88,7 @@ Simple.css is a simple css framework for just starting out a project with.
 
 - [v0.0.1 CSS](http://cdn.smtcs.rocks/sm.css) 3.7 KB
 
-```html
+``` html
 <link rel="stylesheet" href="http://cdn.smtcs.rocks/sm.css">
 ```
 
@@ -102,7 +102,7 @@ jQuery is a javascript framework that strives to be albe to use one function for
 - [v2.1.1 JS](http://cdn.smtcs.rocks/jq/2.js) 242 KB
 - [v1.11.1 JS](http://cdn.smtcs.rocks/jq/1.js) 276 KB
 
-```html
+``` html
 <script src="http://cdn.smtcs.rocks/jq/2.js"></script> <!-- For v2.1.1 -->
 <script src="http://cdn.smtcs.rocks/jq/1.js"></script> <!-- For v1.11.1 -->
 ```
@@ -117,7 +117,7 @@ Highlight.js is a javascript library that allows you to highlight code on webpag
 - [v8.4 JS](http://cdn.smtcs.rocks/hl/hl.js) 67.6 KB
 - [Many Styles](https://highlightjs.org/static/demo/)
 
-```html
+``` html
 <link rel="stylesheet" href="http://cdn.smtcs.rocks/hl/default.css">
 <!-- You can replace default with any of the styles from the list -->
 <script src="http://cdn.smtcs.rocks/hl/hl.js"></script>
@@ -136,7 +136,7 @@ Polymer is this new thing that allows you to use these things called web compone
 - [v0.5.1 Webcomponents.js](http://cdn.smtcs.rocks/pl/wc.js) 42.6 KB
 - [Many Elements](https://www.polymer-project.org/docs/elements/)
 
-```html
+``` html
 <link rel="import" href="http://cdn.smtcs.rocks/pl/pl.html">
 <script src="http://cdn.smtcs.rocks/pl/wc.js"></script> <!-- Compatability with Older browsers -->
 
@@ -156,7 +156,7 @@ Photoswipe is a javascript library that allows you for a super lightweight light
 - [v4.0.0 UI](http://cdn.smtcs.rocks/ps/ps-ui.js) JS 19.0 KB
 - [v4.0.0 Default CSS](http://cdn.smtcs.rocks/ps/skin/skin.css) 10.1 KB
 
-```html
+``` html
 <link rel="stylesheet" href="http://cdn.smtcs.rocks/ps/ps.css">
 <link rel="stylesheet" href="http://cdn.smtcs.rocks/ps/skin/skin.css"> <!-- optional -->
 
@@ -170,7 +170,7 @@ Hashquery is a library that allows you to store data in the url easily
 
 - [v1.0.0 JS](http://cdn.smtcs.rocks/cs/hq.js) 6.3 KB
 
-```html
+``` html
 <script src="http://cdn.smtcs.rocks/hq.js"></script>
 ```
 
@@ -184,10 +184,10 @@ Font awesome is an awesome css icon set that is free for you to use.
 
 - [v4.2.0 CSS](http://cdn.smtcs.rocks/fa/fa.css) 26.3 KB
 
-```html
+``` html
 <link rel="stylesheet" href="http://cdn.smtcs.rocks/fa/fa.css">
 ```
 
 ## Framework request
 
-If you need to request any new framework please just hop into the [#summitcs](http://irc.smtcs.rocks) irc channel
+If you need to request any new framework please just hop into the [hipchat room](http://u.smtcs.rocks/chat)
