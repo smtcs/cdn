@@ -19,7 +19,7 @@ describe 'Misc routes', :type => :feature do
     it 'css should 200 - /fa/fa.css' do
       visit '/fa/fa.css'
       page.status_code.should == 200
-      page.should have_content 'Font Awesome 4.2.0'
+      page.should have_content 'Font Awesome 4.3.0'
     end
 
     describe 'fonts', :type => :feature do

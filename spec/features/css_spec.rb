@@ -2,22 +2,22 @@ require 'spec_helper'
 
 describe 'CSS Framework routes', :type => :feature do
   describe 'bootstrap', :type => :feature do
-    it '3.3.1 css should 200 - /bs/bs.css' do
+    it '3.3.2 css should 200 - /bs/bs.css' do
       visit '/bs/bs.css'
       page.status_code.should == 200
-      page.should have_content 'Bootstrap v3.3.1'
+      page.should have_content 'Bootstrap v3.3.2'
     end
 
-    it '3.3.1 js should 200 - /bs/bs.js' do
+    it '3.3.2 js should 200 - /bs/bs.js' do
       visit '/bs/bs.js'
       page.status_code.should == 200
-      page.should have_content 'Bootstrap v3.3.1'
+      page.should have_content 'Bootstrap v3.3.2'
     end
 
-    it '3.3.1 theme should 200 - /bs/theme.css' do
+    it '3.3.2 theme should 200 - /bs/theme.css' do
       visit '/bs/theme.css'
       page.status_code.should == 200
-      page.should have_content 'Bootstrap v3.3.1'
+      page.should have_content 'Bootstrap v3.3.2'
     end
 
     it '2.3.2 css should 200 - /bs/bs.css?v=2.3' do
@@ -59,7 +59,7 @@ describe 'CSS Framework routes', :type => :feature do
     it 'css should 200 - /md/md.css' do
       visit '/md/md.css'
       page.status_code.should == 200
-      page.should have_content 'normalize.css v3.0.1'
+      page.should have_content 'Materialize v0.95.2 (http://materializecss.com)'
     end
 
     it 'js should 200 - /md/md.js' do
