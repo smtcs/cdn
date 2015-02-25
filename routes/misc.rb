@@ -90,6 +90,16 @@ module CDN
         Analytics.track(user_id: request.ip, event: 'Hit simple.css')
         serve '.', 'simple.css'
       end
+
+      app.get '/v', '/version' do
+        { Ruby: "#{RUBY_VERSION}",
+          Rack: {
+          version: Rack.version,
+          release: Rack.release
+        },
+          Sinatra: "#{Sinatra::VERSION}"
+        }.to_json
+      end
     end
   end
 end
