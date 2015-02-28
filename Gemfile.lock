@@ -29,6 +29,9 @@ GEM
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
+    prometheus-client (0.4.1)
+      quantile (~> 0.2.0)
+    quantile (0.2.0)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -82,6 +85,7 @@ DEPENDENCIES
   codeclimate-test-reporter (~> 0.4.6)
   passenger (~> 5.0.0.rc2)
   poltergeist (~> 1.6.0)
+  prometheus-client
   rake (~> 10.4.2)
   rspec (~> 3.2.0)
   sinatra (~> 1.4.3)
