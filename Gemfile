@@ -1,7 +1,5 @@
 source "https://rubygems.org"
 
-ruby '2.2.0'
-
 gem 'sinatra', '~> 1.4.3'
 gem 'sinatra-contrib', '~> 1.4.2'
 gem 'analytics-ruby', '~> 2.0.12', :require => 'segment/analytics'
